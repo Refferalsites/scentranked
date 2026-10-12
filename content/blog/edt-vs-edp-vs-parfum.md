@@ -3,6 +3,7 @@ title: EDT vs EDP vs Parfum: What the Labels Actually Mean
 date: 2026-10-12T09:00:00+05:00
 description: Eau de toilette, eau de parfum, parfum, elixir. Here's what those words on the bottle mean, and how to pick the right one for you.
 image: product:jean-paul-gaultier-le-male-le-parfum
+category: Buying Tips
 status: published
 ---
 Walk down any fragrance aisle and you'll see the same scent sold three or four different ways: Eau de Toilette, Eau de Parfum, Parfum, sometimes "Intense" or "Elixir". The words describe **concentration**, meaning how much perfume oil is in the alcohol base. They don't tell you the quality.

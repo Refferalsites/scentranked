@@ -3,6 +3,7 @@ title: How to Store Cologne So It Lasts for Years
 date: 2026-10-19T09:00:00+05:00
 description: Heat, light and air are what break fragrance down. Simple storage habits that keep your bottles smelling the way they should.
 image: product:creed-silver-mountain-water
+category: Cologne Guides
 status: published
 ---
 A good bottle of cologne can last a long time, but only if you store it well. Fragrance breaks down because of three things: **heat, light and air**. Keep those under control and your bottles will stay true much longer.

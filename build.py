@@ -144,6 +144,8 @@ ROUNDUPS = [
 SOCIAL = {"Instagram": "#", "TikTok": "#", "Pinterest": "#", "X": "#"}   # set real profile URLs
 ANNOUNCE = "Free shipping on every order at Yoovic · Expedited US shipping available"
 YEAR = datetime.date.today().year
+BLOG_CATS = ["Cologne Guides", "Buying Tips", "Seasonal Picks"]
+POSTS = []
 
 def price(i): return P[i]["price"]
 def pnum(i): return float(re.sub(r"[^\d.]","",P[i]["price"]))
@@ -202,31 +204,33 @@ def crumb_html(items): return '<nav class="crumbs" aria-label="Breadcrumb">'+" <
 def header():
     occ="".join(f'<li><a href="/{r["slug"]}/">{esc(r["title"].replace(" for Men","").replace("Best ",""))}</a></li>' for r in ROUNDUPS)
     br="".join(f'<li><a href="/brands/{slugify(b)}/">{esc(b)}</a></li>' for b in BRANDS)
+    bc="".join(f'<li><a href="/blog/category/{slugify(c)}/">{esc(c)}</a></li>' for c in BLOG_CATS)
     return f"""<a class="skip" href="#main">Skip to content</a><div class="announce">{esc(ANNOUNCE)} · <a href="/affiliate-disclosure/">How we earn</a></div>
 <header class="hdr"><div class="wrap hrow">
 <details class="mnav"><summary aria-label="Open menu"><span></span><span></span><span></span></summary><div class="mpanel">
 <form action="/shop/" role="search"><input name="q" type="search" placeholder="Search colognes" aria-label="Search colognes"></form>
-<a href="/shop/">Shop All</a><p>Best Lists</p><ul>{occ}</ul><p>Brands</p><ul class="cols">{br}</ul><a href="/blog/">Blog</a><a href="/reviews/">All Reviews</a></div></details>
+<a href="/shop/">Shop All</a><p>Best Lists</p><ul>{occ}</ul><p>Brands</p><ul class="cols">{br}</ul><p>Blog</p><ul>{bc}<li><a href="/blog/">All articles</a></li></ul><a href="/reviews/">All Reviews</a></div></details>
 {logo()}
 <nav class="dnav" aria-label="Main"><ul>
 <li class="dd"><a href="/shop/">Shop by Occasion</a><ul class="drop">{occ}<li><a href="/shop/">Shop all colognes</a></li></ul></li>
 <li class="dd"><a href="/brands/">Brands</a><ul class="drop cols">{br}</ul></li>
 <li class="dd"><a href="/best-compliment-getting-colognes/">Best Lists</a><ul class="drop">{occ}</ul></li>
-<li><a href="/blog/">Blog</a></li></ul></nav>
+<li class="dd"><a href="/blog/">Blog</a><ul class="drop">{bc}<li><a href="/blog/">All articles</a></li></ul></li></ul></nav>
 <form class="hsearch" action="/shop/" role="search"><input name="q" type="search" placeholder="Search colognes…" aria-label="Search colognes"><button aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2"/></svg></button></form>
-<a class="hshop" href="/shop/">Shop</a></div></header>"""
+<a class="hblog btn" href="/blog/">Read the Blog</a><a class="hshop" href="/shop/">Shop</a></div></header>"""
 
 def footer():
     soc="".join(f'<a href="{u}" aria-label="{n}"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">{SOC_ICONS[n]}</svg></a>' for n,u in SOCIAL.items())
     lists="".join(f'<li><a href="/{r["slug"]}/">{esc(r["title"].replace(" for Men",""))}</a></li>' for r in ROUNDUPS)
     br="".join(f'<li><a href="/brands/{slugify(b)}/">{esc(b)}</a></li>' for b in BRANDS[:8])
+    bl="".join(f'<li><a href="/blog/category/{slugify(c)}/">{esc(c)}</a></li>' for c in BLOG_CATS)+"".join(f'<li class="fpost"><a href="/blog/{x["slug"]}/">{esc(x["title"])}</a></li>' for x in POSTS[:3])+'<li><a href="/blog/">All articles →</a></li>'
     return f"""<footer class="ftr"><div class="wrap">
 <div class="news"><div><h2>The ScentRanked Edit</h2><p>New guides and picks, about twice a month. No spam.</p></div>
 <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="company" action="/thanks/"><input type="hidden" name="form-name" value="newsletter"><p class="hp"><label>Company <input name="company"></label></p>
 <label class="sr" for="nl-email">Email address</label><input id="nl-email" type="email" name="email" required placeholder="you@example.com" autocomplete="email"><button class="btn">Subscribe</button></form></div>
 <div class="fgrid"><div>{logo()}<p>Plain-English guides to the best designer colognes for men, for US shoppers.</p><div class="soc">{soc}</div></div>
 <div><h3>Best Lists</h3><ul>{lists}<li><a href="/shop/">Shop all</a></li></ul></div>
-<div><h3>Top Brands</h3><ul>{br}<li><a href="/brands/">All brands</a></li></ul></div>
+<div><h3>Blog</h3><ul>{bl}</ul></div><div><h3>Top Brands</h3><ul>{br}<li><a href="/brands/">All brands</a></li></ul></div>
 <div><h3>Company</h3><ul><li><a href="/about/">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/reviews/">Reviews</a></li><li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/rss.xml">RSS</a></li></ul></div></div>
 <p class="fdisc"><strong>Affiliate disclosure:</strong> {SITE_NAME} is reader-supported. "Purchase Now" links go to Yoovic, and we may earn a commission at no extra cost to you. Prices were checked on {TODAY} and may change. Brand names are trademarks of their owners; {SITE_NAME} is not affiliated with or endorsed by them.</p>
 <p class="legal">© {YEAR} {SITE_NAME} · <a href="/privacy/">Privacy</a> · <a href="/affiliate-disclosure/">Disclosure</a> · <a href="/sitemap.xml">Sitemap</a></p></div></footer>"""
@@ -255,6 +259,8 @@ f.addEventListener('input',run);f.addEventListener('submit',function(e){e.preven
 SITE_JS = r"""document.querySelectorAll('.thumbs button').forEach(function(b){b.addEventListener('click',function(){var m=document.getElementById('gmain');m.src=b.dataset.src;document.querySelectorAll('.thumbs button').forEach(function(x){x.setAttribute('aria-pressed',x===b)})})});"""
 
 def build():
+    global POSTS
+    POSTS = load_posts()
     if os.path.exists(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT); open(os.path.join(OUT,"style.css"),"w").write(CSS)
     open(os.path.join(OUT,"shop.js"),"w").write(SHOP_JS); open(os.path.join(OUT,"site.js"),"w").write(SITE_JS)
@@ -330,8 +336,9 @@ def build():
     promos=[("best-compliment-getting-colognes","Top Colognes of "+str(YEAR),"The compliment-getters",47),("best-colognes-under-100","Under $100 Picks","Designer scents, sensible prices",48),("best-date-night-colognes","Date Night","Warm, close, unforgettable",32),("best-summer-colognes","Summer Fresh","Scents that survive the heat",2)]
     pr="".join(f'<a class="promo" href="/{s}/"><img src="{P[i]["image"]}" alt="" width="300" height="300" loading="lazy"><div><small>{esc(sub)}</small><strong>{esc(t)}</strong><span>Shop the list →</span></div></a>' for s,t,sub,i in promos)
     brs="".join(f'<a href="/brands/{slugify(b)}/">{esc(b)}</a>' for b in BRANDS)
-    blogp=[x for x in load_posts()][:3]
-    bp="".join(f'<a class="post-card" href="/blog/{x["slug"]}/"><div><p class="small">{x["dt"].strftime("%b %-d, %Y")}</p><h3>{esc(x["title"])}</h3><p>{esc(x.get("description",""))}</p></div></a>' for x in blogp)
+    def pcards(lst): return "".join(f'<a class="post-card v" href="/blog/{x["slug"]}/">{f'<img src="{esc(x["img"])}" alt="" width="400" height="250" loading="lazy">' if x.get("img") else ''}<div><p class="small">{esc(x.get("category",""))} · {x["dt"].strftime("%b %-d, %Y")}</p><h3>{esc(x["title"])}</h3><p>{esc(x.get("description",""))}</p></div></a>' for x in lst)
+    secs=[("Latest Articles","/blog/",POSTS[:4])]+[(c,f"/blog/category/{slugify(c)}/",[x for x in POSTS if x.get("category")==c][:4]) for c in BLOG_CATS]
+    blogsecs="".join(f'<section class="sec blogsec{" alt" if k%2 else ""}"><div class="shead"><h2 class="h2">{esc(t)}</h2><a href="{u}">View all →</a></div><div class="posts four">{pcards(l)}</div></section>' for k,(t,u,l) in enumerate(secs) if l)
     body=f"""<section class="hero"><div class="wrap hgrid"><div class="htxt"><p class="kicker">The {YEAR} Edit · Best Designer Colognes for Men</p><h1>Find the cologne that<br><em>gets you noticed.</em></h1>
 <p class="lede">Curated picks from Chanel, Versace, Jean Paul Gaultier, Armani, Creed and more, ranked by occasion in plain English. Every pick ships from Yoovic.</p>
 <div class="hbtn"><a class="btn lg" href="/shop/">Shop the Edit</a><a class="btn ghost lg" href="/best-compliment-getting-colognes/">Top Colognes of {YEAR}</a></div></div>
@@ -341,7 +348,7 @@ def build():
 <section class="wrap sec"><div class="shead"><h2 class="h2">Editor's top picks</h2><a href="/shop/">View all →</a></div><div class="pgrid">{''.join(card(i,k+1,eager=k<2) for k,i in enumerate(TOP))}</div></section>
 <section class="banner"><div class="wrap"><div><p class="kicker">Under $100</p><h2>Designer quality, without the designer markup.</h2><p>Versace Eros Flame, Le Male, 1 Million and more, all under $100.</p><a class="btn lg" href="/best-colognes-under-100/">Shop Under $100</a></div><img src="{P[48]['image']}" alt="Versace Eros Flame" width="320" height="320" loading="lazy"></div></section>
 <section class="wrap sec"><h2 class="h2">Shop by brand</h2><div class="brandrow">{brs}</div></section>
-{f'<section class="wrap sec"><div class="shead"><h2 class="h2">From the blog</h2><a href="/blog/">All posts →</a></div><div class="posts three">{bp}</div></section>' if bp else ''}
+{blogsecs}
 <section class="wrap sec prose"><h2 class="h2">How we pick</h2><p>We focus on fragrances with long, well-documented reputations in the US and sort them by what you'll actually use them for: office, summer, date night, or getting noticed. We don't publish star ratings, scores or invented reviews. You get our honest opinion, the published notes, and who each scent suits. "Purchase Now" links go to the product page at Yoovic, and we may earn a commission (<a href="/affiliate-disclosure/">details</a>).</p></section>"""
     sch=[{"@context":"https://schema.org","@type":"WebSite","name":SITE_NAME,"url":SITE_URL+"/","potentialAction":{"@type":"SearchAction","target":SITE_URL+"/shop/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@context":"https://schema.org","@type":"Organization","name":SITE_NAME,"url":SITE_URL+"/","logo":SITE_URL+"/logo.svg"}]
     urls.insert(0,page("index.html",f"Best Designer Colognes for Men ({YEAR}): Top Picks | {SITE_NAME}","The best designer colognes for men in "+str(YEAR)+": compliment-getters, date night, summer and under-$100 picks from Chanel, Versace, JPG, Armani and Creed, with current prices.",body,sch,P[14]['image'],full=True))
@@ -423,26 +430,34 @@ def load_posts():
         d = parse_date(meta["date"])
         if meta.get("status", "draft").lower() != "published": print(f"  skip (draft): {fn}"); continue
         if d > now: print(f"  skip (scheduled {d.isoformat()}): {fn}"); continue
-        posts.append(dict(meta, slug=slug, dt=d, body=body))
+        img = meta.get("image", "")
+        if img.startswith("product:"): img = P[SLUG2I[img[8:]]]["image"]
+        if meta.get("category") and meta["category"] not in BLOG_CATS: raise ValueError(f"{fn}: unknown category {meta['category']} (add it to BLOG_CATS)")
+        posts.append(dict(meta, slug=slug, dt=d, body=body, img=img))
     return sorted(posts, key=lambda p: p["dt"], reverse=True)
 
 def build_blog():
-    posts = load_posts(); urls = []
+    posts = POSTS; urls = []
+    def cats_nav(cur=None): return '<div class="chips">'+f'<a class="chip{" on" if cur is None else ""}" href="/blog/">All</a>'+"".join(f'<a class="chip{" on" if cur==c else ""}" href="/blog/category/{slugify(c)}/">{esc(c)}</a>' for c in BLOG_CATS)+'</div>'
+    def plist(lst): return "".join(f"""<a class="post-card" href="/blog/{p['slug']}/">{f'<img src="{esc(p["img"])}" alt="" width="400" height="250" loading="lazy">' if p['img'] else ''}<div><p class="small">{esc(p.get('category',''))} · {p['dt'].strftime('%b %-d, %Y')}</p><h2>{esc(p['title'])}</h2><p>{esc(p.get('description',''))}</p></div></a>""" for p in lst) or "<p>No posts yet.</p>"
     for p in posts:
-        img = p.get("image", "")
-        if img.startswith("product:"): img = P[SLUG2I[img[8:]]]["image"]
-        p["img"] = img
-        body = f"""<nav class="crumbs"><a href="/">Home</a> › <a href="/blog/">Blog</a> › {esc(p['title'])}</nav>
-<article class="prose post"><h1>{esc(p['title'])}</h1><p class="small">{p['dt'].strftime('%B %-d, %Y')} · {SITE_NAME} Editors</p>
-{f'<img class="post-hero" src="{esc(img)}" alt="">' if img else ''}{md(p['body'])}</article>"""
-        sch = [{"@context":"https://schema.org","@type":"BlogPosting","headline":p["title"],"description":p.get("description",""),"datePublished":p["dt"].isoformat(),
-                "image":img or None,"author":{"@type":"Organization","name":SITE_NAME},"mainEntityOfPage":f"{SITE_URL}/blog/{p['slug']}/"},
+        img = p["img"]; cat = p.get("category")
+        rel = [x for x in posts if x is not p and x.get("category")==cat][:3]
+        body = f"""{crumb_html([("Home","/"),("Blog","/blog/")]+([(cat,f"/blog/category/{slugify(cat)}/")] if cat else [])+[(p['title'],None)])}
+<article class="prose post">{f'<a class="kicker" href="/blog/category/{slugify(cat)}/">{esc(cat)}</a>' if cat else ''}<h1>{esc(p['title'])}</h1><p class="small">{p['dt'].strftime('%B %-d, %Y')} · {SITE_NAME} Editors</p>
+{f'<img class="post-hero" src="{esc(img)}" alt="" width="760" height="380">' if img else ''}{md(p['body'])}</article>
+{f'<section class="sec"><h2 class="h2">More {esc(cat)}</h2><div class="posts four">{plist(rel)}</div></section>' if rel else ''}"""
+        sch = [{"@context":"https://schema.org","@type":"BlogPosting","headline":p["title"],"description":p.get("description",""),"datePublished":p["dt"].isoformat(),"articleSection":cat,
+                "image":img or None,"author":{"@type":"Organization","name":SITE_NAME},"publisher":{"@type":"Organization","name":SITE_NAME,"logo":{"@type":"ImageObject","url":SITE_URL+"/logo.svg"}},"mainEntityOfPage":f"{SITE_URL}/blog/{p['slug']}/"},
                crumbs([("Home","/"),("Blog","/blog/"),(p["title"],f"/blog/{p['slug']}/")])]
         urls.append(page(f"blog/{p['slug']}/index.html", f"{p['title']} | {SITE_NAME}", p.get("description",""), body, sch, img or None))
-    lst = "".join(f"""<a class="post-card" href="/blog/{p['slug']}/">{f'<img src="{esc(p["img"])}" alt="" loading="lazy">' if p['img'] else ''}<div><p class="small">{p['dt'].strftime('%b %-d, %Y')}</p><h2>{esc(p['title'])}</h2><p>{esc(p.get('description',''))}</p></div></a>""" for p in posts) or "<p>No posts yet.</p>"
-    urls.append(page("blog/index.html", f"Cologne Blog: Guides & Tips | {SITE_NAME}", "Practical guides to buying, wearing and storing men's cologne.",
-        f'<h1>The ScentRanked Blog</h1><p class="lede">Practical, no-hype guides to buying and wearing cologne.</p><div class="posts">{lst}</div>'))
-    items = "".join(f"<item><title>{esc(p['title'])}</title><link>{SITE_URL}/blog/{p['slug']}/</link><guid>{SITE_URL}/blog/{p['slug']}/</guid><pubDate>{email.utils.format_datetime(p['dt'])}</pubDate><description>{esc(p.get('description',''))}</description></item>" for p in posts)
+    urls.append(page("blog/index.html", f"Men's Cologne Blog: Guides, Buying Tips & Seasonal Picks | {SITE_NAME}", "Practical, no-hype guides to choosing, buying, wearing and storing men's cologne.",
+        f'{crumb_html([("Home","/"),("Blog",None)])}<h1>The ScentRanked Blog</h1><p class="lede">Practical, no-hype guides to buying and wearing cologne.</p>{cats_nav()}<div class="posts">{plist(posts)}</div>',[crumbs([("Home","/"),("Blog","/blog/")])]))
+    for c in BLOG_CATS:
+        lst=[x for x in posts if x.get("category")==c]; s=slugify(c)
+        urls.append(page(f"blog/category/{s}/index.html", f"{c}: Men's Cologne Articles | {SITE_NAME}", f"{c} from the {SITE_NAME} blog: practical articles on men's cologne.",
+            f'{crumb_html([("Home","/"),("Blog","/blog/"),(c,None)])}<h1>{esc(c)}</h1>{cats_nav(c)}<div class="posts">{plist(lst)}</div>',[crumbs([("Home","/"),("Blog","/blog/"),(c,f"/blog/category/{s}/")])]))
+    items = "".join(f"<item><title>{esc(p['title'])}</title><link>{SITE_URL}/blog/{p['slug']}/</link><guid>{SITE_URL}/blog/{p['slug']}/</guid><pubDate>{email.utils.format_datetime(p['dt'])}</pubDate>{f'<category>{esc(p.get(chr(99)+'ategory'))}</category>' if p.get('category') else ''}<description>{esc(p.get('description',''))}</description></item>" for p in posts)
     open(os.path.join(OUT, "rss.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>{SITE_NAME} Blog</title><link>{SITE_URL}/blog/</link><description>Men\'s cologne guides</description>{items}</channel></rss>\n')
     print(f"  blog: {len(posts)} published")
     return urls

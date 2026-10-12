@@ -3,6 +3,7 @@ title: How to Apply Cologne (Without Overdoing It)
 date: 2026-10-15T09:00:00+05:00
 description: Where to spray, how many sprays, and the common mistakes that make cologne either vanish in an hour or fill an elevator.
 image: product:versace-eros-edt
+category: Cologne Guides
 status: published
 ---
 Most cologne mistakes come down to two things: spraying too much, or spraying in the wrong place. Here's a simple routine that works for nearly any fragrance.
