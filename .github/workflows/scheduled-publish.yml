@@ -1,0 +1,15 @@
+name: Scheduled publish
+on:
+  schedule:
+    - cron: "15 4 * * *"   # daily 04:15 UTC (09:15 PKT); posts dated before this go live
+  workflow_dispatch:
+jobs:
+  trigger-netlify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify build hook
+        env:
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "NETLIFY_BUILD_HOOK secret not set"; exit 1; fi
+          curl -fsS -X POST -d '{}' "$HOOK"

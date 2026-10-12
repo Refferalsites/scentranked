@@ -1,0 +1,6 @@
+public/
+.netlify/
+__pycache__/
+*.pyc
+.DS_Store
+preview*.png
