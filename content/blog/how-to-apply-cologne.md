@@ -1,11 +1,14 @@
 ---
-title: How to Apply Cologne (Without Overdoing It)
+title: "How Should You Apply Cologne?"
 date: 2026-10-15T09:00:00+05:00
-description: Where to spray, how many sprays, and the common mistakes that make cologne either vanish in an hour or fill an elevator.
+description: "Where to spray, how many sprays, and the common mistakes that make cologne either vanish in an hour or fill an elevator."
 image: product:versace-eros-edt
+question: "How should you apply cologne?"
 category: Cologne Guides
 status: published
 ---
+**Short answer:** Spray 2–4 times onto clean, moisturized skin on your chest or the base of your neck, holding the bottle a few inches away. Use fewer sprays for strong, sweet scents, and don't rub your wrists together.
+
 Most cologne mistakes come down to two things: spraying too much, or spraying in the wrong place. Here's a simple routine that works for nearly any fragrance.
 
 ## Where to spray

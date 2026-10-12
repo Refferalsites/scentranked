@@ -152,6 +152,7 @@ ROUNDUPS = [
 SOCIAL = {n: (SETTINGS.get("social", {}).get(n.lower()) or "#") for n in ["Instagram", "TikTok", "Pinterest", "X"]}   # edit in /admin > Settings
 ANNOUNCE = SETTINGS.get("announcement") or "Free shipping on every order at Yoovic · Expedited US shipping available"
 YEAR = datetime.date.today().year
+PUB_SLUGS = set(); QUESTIONS = []
 BLOG_CATS = ["Cologne Guides", "Buying Tips", "Seasonal Picks"]
 POSTS = []
 
@@ -223,7 +224,7 @@ def header():
 <li class="dd"><a href="/shop/">Shop by Occasion</a><ul class="drop">{occ}<li><a href="/shop/">Shop all colognes</a></li></ul></li>
 <li class="dd"><a href="/brands/">Brands</a><ul class="drop cols">{br}</ul></li>
 <li class="dd"><a href="/best-compliment-getting-colognes/">Best Lists</a><ul class="drop">{occ}</ul></li>
-<li class="dd"><a href="/blog/">Blog</a><ul class="drop">{bc}<li><a href="/blog/">All articles</a></li></ul></li></ul></nav>
+<li class="dd"><a href="/blog/">Blog</a><ul class="drop">{bc}<li><a href="/blog/">All articles</a></li><li><a href="/questions/">Questions &amp; answers</a></li></ul></li></ul></nav>
 <form class="hsearch" action="/shop/" role="search"><input name="q" type="search" placeholder="Search colognes…" aria-label="Search colognes"><button aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2"/></svg></button></form>
 <a class="hblog btn" href="/blog/">Read the Blog</a><a class="hshop" href="/shop/">Shop</a></div></header>"""
 
@@ -231,7 +232,7 @@ def footer():
     soc="".join(f'<a href="{u}" aria-label="{n}"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">{SOC_ICONS[n]}</svg></a>' for n,u in SOCIAL.items())
     lists="".join(f'<li><a href="/{r["slug"]}/">{esc(r["title"].replace(" for Men",""))}</a></li>' for r in ROUNDUPS)
     br="".join(f'<li><a href="/brands/{slugify(b)}/">{esc(b)}</a></li>' for b in BRANDS[:8])
-    bl="".join(f'<li><a href="/blog/category/{slugify(c)}/">{esc(c)}</a></li>' for c in BLOG_CATS)+"".join(f'<li class="fpost"><a href="/blog/{x["slug"]}/">{esc(x["title"])}</a></li>' for x in POSTS[:3])+'<li><a href="/blog/">All articles →</a></li>'
+    bl="".join(f'<li><a href="/blog/category/{slugify(c)}/">{esc(c)}</a></li>' for c in BLOG_CATS)+"".join(f'<li class="fpost"><a href="/blog/{x["slug"]}/">{esc(x["title"])}</a></li>' for x in POSTS[:3])+'<li><a href="/questions/">Questions &amp; answers</a></li><li><a href="/blog/">All articles →</a></li>'
     return f"""<footer class="ftr"><div class="wrap">
 <div class="news"><div><h2>The ScentRanked Edit</h2><p>New guides and picks, about twice a month. No spam.</p></div>
 <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="company" action="/thanks/"><input type="hidden" name="form-name" value="newsletter"><p class="hp"><label>Company <input name="company"></label></p>
@@ -301,8 +302,9 @@ f.addEventListener('input',run);f.addEventListener('submit',function(e){e.preven
 SITE_JS = r"""document.querySelectorAll('.thumbs button').forEach(function(b){b.addEventListener('click',function(){var m=document.getElementById('gmain');m.src=b.dataset.src;document.querySelectorAll('.thumbs button').forEach(function(x){x.setAttribute('aria-pressed',x===b)})})});"""
 
 def build():
-    global POSTS
-    POSTS = load_posts()
+    global POSTS, PUB_SLUGS, QUESTIONS
+    POSTS = load_posts(); PUB_SLUGS = {p["slug"] for p in POSTS}
+    QUESTIONS = json.load(open(os.path.join(BASE, "data", "questions.json")))["questions"]
     if os.path.exists(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT); open(os.path.join(OUT,"style.css"),"w").write(CSS)
     shutil.copytree(os.path.join(BASE, "admin"), os.path.join(OUT, "admin"))
@@ -385,6 +387,11 @@ def build():
     def pcards(lst): return "".join(f'<a class="post-card v" href="/blog/{x["slug"]}/">{pimg(x)}<div><p class="small">{esc(x.get("category",""))} · {x["dt"].strftime("%b %-d, %Y")}</p><h3>{esc(x["title"])}</h3><p>{esc(x.get("description",""))}</p></div></a>' for x in lst)
     secs=[("Latest Articles","/blog/",POSTS[:4])]+[(c,f"/blog/category/{slugify(c)}/",[x for x in POSTS if x.get("category")==c][:4]) for c in BLOG_CATS]
     blogsecs="".join(f'<section class="sec blogsec{" alt" if k%2 else ""}"><div class="shead"><h2 class="h2">{esc(t)}</h2><a href="{u}">View all →</a></div><div class="posts four">{pcards(l)}</div></section>' for k,(t,u,l) in enumerate(secs) if l)
+    faqs=[q for q in QUESTIONS if q.get("home_answer")][:12]
+    def qlink(q): return f"/blog/{q['post']}/" if q.get("post") in PUB_SLUGS else "/questions/"
+    faq_items="".join(f"""<details class="faq"><summary>{esc(q['question'])}</summary><div><p>{esc(q['home_answer'])}</p><p class="faqlinks"><a href="{qlink(q)}">{'Read the full answer →' if q.get('post') in PUB_SLUGS else 'More questions →'}</a>{(' ' + buy(SLUG2I[q['product']], cls='btn sm') + f' <a class="small" href="/reviews/{q["product"]}/">{esc(F[SLUG2I[q["product"]]]["short"])}</a>') if q.get('product') in SLUG2I else ''}</p></div></details>""" for q in faqs)
+    faq_html=f'<section class="sec faqsec" id="faq"><div class="shead"><h2 class="h2">Cologne questions, answered</h2><a href="/questions/">All questions →</a></div><p class="lede">Real questions US shoppers search for, with straight answers.</p><div class="faqs">{faq_items}</div></section>'
+    faq_schema={"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q["question"],"acceptedAnswer":{"@type":"Answer","text":q["home_answer"]}} for q in faqs]}
     body=f"""<section class="hero"><div class="wrap hgrid"><div class="htxt"><p class="kicker">The {YEAR} Edit · Best Designer Colognes for Men</p><h1>Find the cologne that<br><em>gets you noticed.</em></h1>
 <p class="lede">Curated picks from Chanel, Versace, Jean Paul Gaultier, Armani, Creed and more, ranked by occasion in plain English. Every pick ships from Yoovic.</p>
 <div class="hbtn"><a class="btn lg" href="/shop/">Shop the Edit</a><a class="btn ghost lg" href="/best-compliment-getting-colognes/">Top Colognes of {YEAR}</a></div></div>
@@ -394,9 +401,9 @@ def build():
 <section class="wrap sec"><div class="shead"><h2 class="h2">Editor's top picks</h2><a href="/shop/">View all →</a></div><div class="pgrid">{''.join(card(i,k+1,eager=k<2) for k,i in enumerate(TOP))}</div></section>
 <section class="banner"><div class="wrap"><div><p class="kicker">Under $100</p><h2>Designer quality, without the designer markup.</h2><p>Versace Eros Flame, Le Male, 1 Million and more, all under $100.</p><a class="btn lg" href="/best-colognes-under-100/">Shop Under $100</a></div><img src="{P[48]['image']}" alt="Versace Eros Flame" width="320" height="320" loading="lazy"></div></section>
 <section class="wrap sec"><h2 class="h2">Shop by brand</h2><div class="brandrow">{brs}</div></section>
-{blogsecs}
+{faq_html}{blogsecs}
 <section class="wrap sec prose"><h2 class="h2">How we pick</h2><p>We focus on fragrances with long, well-documented reputations in the US and sort them by what you'll actually use them for: office, summer, date night, or getting noticed. We don't publish star ratings, scores or invented reviews. You get our honest opinion, the published notes, and who each scent suits. "Purchase Now" links go to the product page at Yoovic, and we may earn a commission (<a href="/affiliate-disclosure/">details</a>).</p></section>"""
-    sch=[{"@context":"https://schema.org","@type":"WebSite","name":SITE_NAME,"url":SITE_URL+"/","potentialAction":{"@type":"SearchAction","target":SITE_URL+"/shop/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@context":"https://schema.org","@type":"Organization","name":SITE_NAME,"url":SITE_URL+"/","logo":SITE_URL+"/logo.svg"}]
+    sch=[{"@context":"https://schema.org","@type":"WebSite","name":SITE_NAME,"url":SITE_URL+"/","potentialAction":{"@type":"SearchAction","target":SITE_URL+"/shop/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@context":"https://schema.org","@type":"Organization","name":SITE_NAME,"url":SITE_URL+"/","logo":SITE_URL+"/logo.svg"},faq_schema]
     urls.insert(0,page("index.html",f"Best Designer Colognes for Men ({YEAR}): Top Picks | {SITE_NAME}","The best designer colognes for men in "+str(YEAR)+": compliment-getters, date night, summer and under-$100 picks from Chanel, Versace, JPG, Armani and Creed, with current prices.",body,sch,P[14]['image'],full=True))
     # ---- static pages
     S={"about":("About ScentRanked",f"<h1>About {SITE_NAME}</h1><p>{SITE_NAME} is a small editorial site that helps US shoppers pick a men's cologne without the hype. Our guides are organized around real situations (office, summer, date night, budget), and we stick to fragrances with long, well-documented reputations.</p><h2>How we write</h2><ul><li>Scent notes come from brand or retailer information, or widely published fragrance pyramids.</li><li>Our take is editorial opinion. We don't publish star ratings, scores or invented customer reviews.</li><li>Prices are checked on the retailer's site and dated, and they can change at any time.</li></ul><h2>Contact</h2><p>{CONTACT_EMAIL}</p>"),
@@ -407,6 +414,13 @@ def build():
         u=page(f"{s}/index.html",f"{t} | {SITE_NAME}",f"{t} for {SITE_NAME}.",f'<section class="prose static">{b}</section>')
         if s!="thanks": urls.append(u)
     urls += build_blog()
+    topics={}
+    for q in QUESTIONS: topics.setdefault(q["topic"],[]).append(q)
+    tl="".join(f'<a class="chip" href="#{slugify(t)}">{esc(t)}</a>' for t in topics)
+    qs_html="".join(f"""<section class="qtopic" id="{slugify(t)}"><h2>{esc(t)}</h2><ul class="qlist">{"".join(f'<li><a href="/blog/{q["post"]}/">{esc(q["question"])}</a></li>' if q.get("post") in PUB_SLUGS else f'<li><span>{esc(q["question"])}</span> <em class="small">answer coming soon</em></li>' for q in lst)}</ul></section>""" for t,lst in topics.items())
+    answered=sum(1 for q in QUESTIONS if q.get("post") in PUB_SLUGS)
+    hub=f'{crumb_html([("Home","/"),("Questions",None)])}<h1>Men\'s Cologne Questions, Answered</h1><p class="lede">Real questions US shoppers ask about cologne, from search suggestions and fragrance communities, grouped by topic. {answered} answered so far, with more added every week.</p><div class="chips">{tl}</div>{qs_html}'
+    urls.append(page("questions/index.html",f"Men's Cologne Questions & Answers | {SITE_NAME}","Answers to the most common questions about men's cologne: how to apply it, how long it lasts, winter scents, gifting and more.",hub,[crumbs([("Home","/"),("Questions","/questions/")])]))
     page("404.html",f"Page not found | {SITE_NAME}","Page not found",'<section class="prose static"><h1>Page not found</h1><p><a class="btn" href="/shop/">Shop colognes</a></p></section>')
     open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n" for u in urls)+"</urlset>\n")
     ik = re.sub(r"[^a-zA-Z0-9-]", "", SEOS.get("indexnow_key", ""))
@@ -446,11 +460,17 @@ def _front_simple(text):
             k, v = line.split(":", 1); meta[k.strip()] = v.strip().strip('"').strip("'")
     return meta, m.group(2)
 
+def _link(m):
+    href, txt = m.group(2), m.group(1)
+    mm = re.fullmatch(r"/blog/([a-z0-9-]+)/", href)
+    if mm and mm.group(1) not in PUB_SLUGS: return txt   # target not published yet (scheduled): plain text
+    return f'<a href="{href}">{txt}</a>'
+
 def inline(t):
     t = esc(t, quote=False)
     t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
     t = re.sub(r"(?<!\*)\*(?!\s)(.+?)\*", r"<em>\1</em>", t)
-    t = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', t)
+    t = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", _link, t)
     return t
 
 def md(text):
@@ -505,12 +525,15 @@ def build_blog():
         img = p["img"]; cat = p.get("category")
         rel = [x for x in posts if x is not p and x.get("category")==cat][:3]
         body = f"""{crumb_html([("Home","/"),("Blog","/blog/")]+([(cat,f"/blog/category/{slugify(cat)}/")] if cat else [])+[(p['title'],None)])}
-<article class="prose post">{f'<a class="kicker" href="/blog/category/{slugify(cat)}/">{esc(cat)}</a>' if cat else ''}<h1>{esc(p['title'])}</h1><p class="small">{p['dt'].strftime('%B %-d, %Y')} · {SITE_NAME} Editors</p>
+<article class="prose post">{f'<a class="kicker" href="/blog/category/{slugify(cat)}/">{esc(cat)}</a>' if cat else ''}<h1>{esc(p['title'])}</h1>{f'<p class="qline"><span>Q</span>{esc(p["question"])}</p>' if p.get("question") else ''}<p class="small">{p['dt'].strftime('%B %-d, %Y')} · {SITE_NAME} Editors</p>
 {f'<img class="post-hero" src="{esc(img)}" alt="" width="760" height="380">' if img else ''}{md(p['body'])}</article>
 {f'<section class="sec"><h2 class="h2">More {esc(cat)}</h2><div class="posts four">{plist(rel)}</div></section>' if rel else ''}"""
         sch = [{"@context":"https://schema.org","@type":"BlogPosting","headline":p["title"],"description":p.get("description",""),"datePublished":p["dt"].isoformat(),"articleSection":cat,
                 "image":img or None,"author":{"@type":"Organization","name":SITE_NAME},"publisher":{"@type":"Organization","name":SITE_NAME,"logo":{"@type":"ImageObject","url":SITE_URL+"/logo.svg"}},"mainEntityOfPage":f"{SITE_URL}/blog/{p['slug']}/"},
                crumbs([("Home","/"),("Blog","/blog/"),(p["title"],f"/blog/{p['slug']}/")])]
+        sa = re.search(r"\*\*Short answer:\*\*\s*(.+)", p["body"])
+        if p.get("question") and sa:
+            sch.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":p["question"],"acceptedAnswer":{"@type":"Answer","text":re.sub(r"[*\[\]]","",sa.group(1)).strip()}}]})
         urls.append(page(f"blog/{p['slug']}/index.html", f"{p['title']} | {SITE_NAME}", p.get("description",""), body, sch, img or None))
     urls.append(page("blog/index.html", f"Men's Cologne Blog: Guides, Buying Tips & Seasonal Picks | {SITE_NAME}", "Practical, no-hype guides to choosing, buying, wearing and storing men's cologne.",
         f'{crumb_html([("Home","/"),("Blog",None)])}<h1>The ScentRanked Blog</h1><p class="lede">Practical, no-hype guides to buying and wearing cologne.</p>{cats_nav()}<div class="posts">{plist(posts)}</div>',[crumbs([("Home","/"),("Blog","/blog/")])]))

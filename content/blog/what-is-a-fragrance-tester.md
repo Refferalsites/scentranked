@@ -1,11 +1,14 @@
 ---
-title: What Is a Fragrance Tester, and Should You Buy One?
+title: "What Is a Fragrance Tester, and Should You Buy One?"
 date: 2026-10-12T13:00:00+05:00
-description: Tester bottles explained: what's different, what's the same, and when they're a smart buy.
+description: "Tester bottles explained: what's different, what's the same, and when they're a smart buy."
 image: product:paco-rabanne-1-million-edt
+question: "What is a fragrance tester?"
 category: Buying Tips
 status: published
 ---
+**Short answer:** A tester is a bottle made for stores to let shoppers sample a fragrance. It typically holds the same fragrance as the retail version but comes in plainer packaging, often without a box or cap, and usually costs less. It's a good buy for yourself, less so as a gift.
+
 Shopping for cologne online, you'll sometimes see the word **tester** in a listing. Here's what that usually means.
 
 ## What a tester is

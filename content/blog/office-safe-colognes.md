@@ -1,11 +1,14 @@
 ---
-title: How to Choose an Office-Safe Cologne
+title: "Should You Wear Cologne to Work? How to Choose an Office-Safe Scent"
 date: 2026-10-12T12:00:00+05:00
-description: What makes a fragrance appropriate for work, how much to wear, and the styles that rarely bother coworkers.
+description: "What makes a fragrance appropriate for work, how much to wear, and the styles that rarely bother coworkers."
 image: product:carolina-herrera-212-men
+question: "Should you wear cologne to work?"
 category: Cologne Guides
 status: published
 ---
+**Short answer:** Yes, lightly. Choose a fresh, moderate fragrance and wear one to three sprays so people notice it only when they're close to you. Check whether your workplace has a fragrance-free policy first.
+
 A good work fragrance makes you seem put-together without announcing itself. The rule of thumb: people should notice it when they're close to you, not from across the room.
 
 ## What tends to work at the office

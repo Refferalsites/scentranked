@@ -1,0 +1,521 @@
+{
+ "meta": {
+  "generated": "2026-10-13",
+  "method": "Google Autocomplete (suggestqueries.google.com, gl=us, hl=en) with question modifiers how/what/which/is/can/does/should/why/when over seeds incl. cologne, men's cologne, winter/christmas/black friday cologne, popular brands; Google Trends US related queries; Reddit threads found via web search (Reddit API blocked direct access); People-also-ask style questions from web search. No search volumes are claimed.",
+  "trends_cologne_30d": {
+   "top": [
+    "men cologne",
+    "cologne for men",
+    "mens cologne",
+    "ysl cologne",
+    "valentino cologne",
+    "creed cologne",
+    "versace cologne",
+    "prada cologne",
+    "best cologne for men",
+    "dior cologne"
+   ],
+   "rising": [
+    "joe jonas cologne (Breakout)",
+    "monster cologne (+250%)",
+    "zeus cologne (+170%)",
+    "clive christian cologne (+110%)",
+    "cologne sampler set (+50%)",
+    "jpg cologne (+40%)",
+    "sephora cologne sampler (+40%)"
+   ]
+  }
+ },
+ "questions": [
+  {
+   "question": "What men's cologne gets the most compliments?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"what men's cologne\"",
+   "intent": "commercial",
+   "target_month": "Oct 2026",
+   "topic": "Best colognes",
+   "post": "what-mens-cologne-gets-the-most-compliments",
+   "home_answer": "There's no scientific ranking, but sweet-fresh crowd-pleasers with good projection (Versace Eros, Bleu de Chanel, Le Male Le Parfum, Azzaro The Most Wanted) are the names most often recommended as compliment-getters.",
+   "product": "versace-eros-edt"
+  },
+  {
+   "question": "Which is better, eau de toilette or eau de parfum?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"which is better eau de toilette or eau de parfum\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Concentrations",
+   "post": "edt-vs-edp-vs-parfum",
+   "home_answer": "Neither is better in quality. Eau de parfum is more concentrated and usually lasts longer and smells warmer; eau de toilette is lighter and fresher, which suits heat and the office.",
+   "product": "jean-paul-gaultier-le-male-le-parfum"
+  },
+  {
+   "question": "Does cologne expire?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"does cologne\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Care & storage",
+   "post": "does-cologne-expire",
+   "home_answer": "Cologne doesn't have a hard expiry date, but it slowly degrades. Stored away from heat, light and air, most bottles stay good for several years; a sour or 'off' opening means it has turned.",
+   "product": null
+  },
+  {
+   "question": "Is cologne for men or women?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"is cologne for men\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Basics",
+   "post": "is-cologne-for-men-or-women",
+   "home_answer": "Anyone can wear cologne. Technically 'eau de cologne' is just a light concentration; in the US the word is used for fragrances marketed to men, but scent has no gender.",
+   "product": null
+  },
+  {
+   "question": "Is Bleu de Chanel worth it?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"is bleu de chanel\"",
+   "intent": "commercial",
+   "target_month": "Oct 2026",
+   "topic": "Brands",
+   "post": "is-bleu-de-chanel-worth-it",
+   "home_answer": "For most men, yes: it's one of the most versatile designer scents, working at the office, on weekends and at dinner. If you want something unique or loud, look elsewhere.",
+   "product": "bleu-de-chanel-edt"
+  },
+  {
+   "question": "Is Versace Eros for summer or winter?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"is versace eros\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Seasons",
+   "post": "is-versace-eros-for-summer-or-winter",
+   "home_answer": "Versace Eros is best in cool weather (fall, winter, spring evenings). Its sweet vanilla-tonka base can feel heavy in summer heat, though a light spray works on summer nights.",
+   "product": "versace-eros-edt"
+  },
+  {
+   "question": "Why doesn't cologne last on me?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"why cologne\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Application",
+   "post": "why-doesnt-cologne-last-on-me",
+   "home_answer": "Usually it's dry skin, a light concentration (EDT/cologne), nose blindness, or fresh citrus notes that evaporate fast. Moisturize first, spray clothes lightly, or choose an EDP.",
+   "product": null
+  },
+  {
+   "question": "Can cologne go in a carry-on?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"can cologne\"",
+   "intent": "informational",
+   "target_month": "Nov 2026",
+   "topic": "Travel",
+   "post": "can-cologne-go-in-a-carry-on",
+   "home_answer": "Yes, under TSA rules: bottles of 3.4 oz (100 ml) or less, inside your one quart-size liquids bag. Bigger bottles must go in checked luggage.",
+   "product": null
+  },
+  {
+   "question": "Should cologne be sprayed on clothes?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"should cologne be\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Application",
+   "post": "should-cologne-be-sprayed-on-clothes",
+   "home_answer": "You can: fabric holds scent longer than skin. But skin lets the fragrance develop with body heat, and some fragrances can stain delicate fabrics, so many people do both lightly.",
+   "product": null
+  },
+  {
+   "question": "How should you apply cologne?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"how should you apply cologne\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Application",
+   "post": "how-to-apply-cologne",
+   "home_answer": "Spray 2–4 times on the chest or base of the neck from a few inches away, on clean moisturized skin, and don't rub your wrists together.",
+   "product": null
+  },
+  {
+   "question": "Should cologne be kept in the bathroom?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"should cologne be in the bathroom\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Care & storage",
+   "post": "how-to-store-cologne",
+   "home_answer": "Ideally not. Heat and humidity swings from showers speed up breakdown. A cool, dark drawer or closet is better.",
+   "product": null
+  },
+  {
+   "question": "How do you buy cologne for men?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"how to buy cologne for men\"",
+   "intent": "commercial",
+   "target_month": "Oct 2026",
+   "topic": "Buying",
+   "post": "how-to-find-your-signature-scent",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "What does the best cologne smell like?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"what does the best cologne smell like\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Basics",
+   "post": "fragrance-families-explained",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Should you wear cologne to work?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"should you wear cologne to work\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Occasions",
+   "post": "office-safe-colognes",
+   "home_answer": "Yes, lightly. Choose a fresh, moderate scent and wear 1–3 sprays so people notice it only up close. Check whether your workplace has a fragrance-free policy.",
+   "product": "carolina-herrera-212-men"
+  },
+  {
+   "question": "What is a fragrance tester?",
+   "source": "Editorial (no search-volume source; supports a related researched question)",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Buying",
+   "post": "what-is-a-fragrance-tester",
+   "home_answer": null,
+   "product": "paco-rabanne-1-million-edt"
+  },
+  {
+   "question": "Should you blind buy cologne?",
+   "source": "Editorial (no search-volume source; supports a related researched question)",
+   "intent": "commercial",
+   "target_month": "Oct 2026",
+   "topic": "Buying",
+   "post": "blind-buying-cologne-tips",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "What cologne is best for fall?",
+   "source": "Editorial (no search-volume source; supports a related researched question)",
+   "intent": "commercial",
+   "target_month": "Oct 2026",
+   "topic": "Seasons",
+   "post": "best-fall-colognes",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "What are good winter colognes?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"what are good winter colognes\"; Reddit threads https://www.reddit.com/r/Colognes/comments/1vxjizl/best_winter_fragrance_in_your_opinion/ and https://www.reddit.com/r/Fragrances/comments/1vgkq03/winter_fragrances_for_men/",
+   "intent": "commercial",
+   "target_month": "Nov 2026",
+   "topic": "Seasons",
+   "post": "best-winter-colognes",
+   "home_answer": "Warm, dense scents with vanilla, amber, tonka, spice or woods hold up best in the cold: think Azzaro The Most Wanted, 1 Million, Le Male Le Parfum or Born in Roma Gold.",
+   "product": "azzaro-the-most-wanted-parfum"
+  },
+  {
+   "question": "Is cologne a good gift?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"is cologne a good gift\"",
+   "intent": "commercial",
+   "target_month": "Dec 2026",
+   "topic": "Gifting",
+   "post": "holiday-cologne-gift-guide",
+   "home_answer": "Yes, if you play it safe: pick a famous, widely liked scent in the style he already wears, and buy the boxed retail version rather than a tester.",
+   "product": "jean-paul-gaultier-le-male-edt"
+  },
+  {
+   "question": "Does cold weather affect cologne?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"does cold weather affect cologne\"",
+   "intent": "informational",
+   "target_month": "Nov 2026",
+   "topic": "Seasons",
+   "post": "does-cold-weather-affect-cologne",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Is Le Male a winter fragrance?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"is le male a winter fragrance\"",
+   "intent": "informational",
+   "target_month": "Nov 2026",
+   "topic": "Seasons",
+   "post": "is-le-male-a-winter-fragrance",
+   "home_answer": null,
+   "product": "jean-paul-gaultier-le-male-edt"
+  },
+  {
+   "question": "Is Versace Eros Flame a winter fragrance?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"is versace eros flame a winter fragrance\"",
+   "intent": "informational",
+   "target_month": "Nov 2026",
+   "topic": "Seasons",
+   "post": "is-versace-eros-flame-a-winter-fragrance",
+   "home_answer": null,
+   "product": "versace-eros-flame"
+  },
+  {
+   "question": "What cologne is good for young men?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"what cologne for young men\"",
+   "intent": "commercial",
+   "target_month": "Nov 2026",
+   "topic": "Best colognes",
+   "post": "what-cologne-for-young-men",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Which perfume gift set is best for men?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"which perfume gift set is best for men\"",
+   "intent": "commercial",
+   "target_month": "Nov 2026",
+   "topic": "Gifting",
+   "post": "which-cologne-gift-set-is-best-for-men",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "What cologne should I get my boyfriend for Christmas?",
+   "source": "Reddit r/Colognes: https://www.reddit.com/r/Colognes/comments/1hf5ezc/help_which_cologne_for_my_boyfriend_for_christmas/; Google Autocomplete (US, en, fetched 2026-10-13), seed: \"is cologne a good gift for boyfriend\"",
+   "intent": "commercial",
+   "target_month": "Dec 2026",
+   "topic": "Gifting",
+   "post": "what-cologne-to-get-boyfriend-for-christmas",
+   "home_answer": "Match his current style: fresh and clean for everyday (Bleu de Chanel), warm and sweet for winter nights (Azzaro The Most Wanted, Le Male Le Parfum). If unsure, choose a famous crowd-pleaser.",
+   "product": "azzaro-the-most-wanted-parfum"
+  },
+  {
+   "question": "What size cologne is best for a gift?",
+   "source": "People-also-ask style question surfaced in web search (necolebitchie.com, 'What Size Perfume Is Good for Gifting?')",
+   "intent": "commercial",
+   "target_month": "Nov 2026",
+   "topic": "Gifting",
+   "post": "what-size-cologne-is-best-for-a-gift",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "How do you gift cologne?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"how to gift cologne\"",
+   "intent": "commercial",
+   "target_month": "Dec 2026",
+   "topic": "Gifting",
+   "post": "how-to-gift-cologne",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Do fragrances go on sale for Black Friday?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"do fragrances go on sale for black friday\"",
+   "intent": "commercial",
+   "target_month": "Nov 2026",
+   "topic": "Deals",
+   "post": "do-fragrances-go-on-sale-for-black-friday",
+   "home_answer": "Often, yes. Many retailers discount fragrance around Black Friday and Cyber Monday, but deals vary by store and brand, so compare the current price before you buy.",
+   "product": null
+  },
+  {
+   "question": "How can you tell if cologne is real?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"how to tell if versace eros is real\"; Google Autocomplete (US, en, fetched 2026-10-13), seed: \"how to know original bleu de chanel\"; Google Autocomplete (US, en, fetched 2026-10-13), seed: \"can perfume gift sets be fake\"",
+   "intent": "informational",
+   "target_month": "Nov 2026",
+   "topic": "Buying",
+   "post": "how-to-tell-if-cologne-is-real",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "What men's cologne lasts the longest?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"what men's cologne last the longest\"",
+   "intent": "commercial",
+   "target_month": "Nov 2026",
+   "topic": "Best colognes",
+   "post": "what-mens-cologne-lasts-the-longest",
+   "home_answer": null,
+   "product": "jean-paul-gaultier-le-male-le-parfum"
+  },
+  {
+   "question": "What men's colognes do women like?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"what men's colognes do women like\"",
+   "intent": "commercial",
+   "target_month": "Dec 2026",
+   "topic": "Best colognes",
+   "post": "what-mens-colognes-do-women-like",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Is it bad to gift perfume?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"is it not good to gift perfume\"",
+   "intent": "informational",
+   "target_month": "Dec 2026",
+   "topic": "Gifting",
+   "post": "is-it-bad-to-gift-perfume",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "What is a cologne gift set?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"what is a cologne gift set\"",
+   "intent": "informational",
+   "target_month": "Dec 2026",
+   "topic": "Gifting",
+   "post": "what-is-a-cologne-gift-set",
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Can cologne stay in a hot car?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"can cologne stay in a hot car\"",
+   "intent": "informational",
+   "target_month": "Jun 2027",
+   "topic": "Care & storage",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Should men wear cologne every day?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"should men wear cologne everyday\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Basics",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Should you wear cologne to the gym?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"should men wear cologne to the gym\"",
+   "intent": "informational",
+   "target_month": "Jan 2027",
+   "topic": "Occasions",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Does cologne stain clothes?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"does cologne stain clothes\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Application",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Does men's pheromone cologne work?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"does men's pheromone cologne work\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Basics",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Which Bleu de Chanel is the best?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"which bleu de chanel is the best\"",
+   "intent": "commercial",
+   "target_month": "Oct 2026",
+   "topic": "Brands",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Which Versace Eros is the best?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"which versace eros is the best\"",
+   "intent": "commercial",
+   "target_month": "Oct 2026",
+   "topic": "Brands",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Which Le Male is the best?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"which le male is the best\"",
+   "intent": "commercial",
+   "target_month": "Oct 2026",
+   "topic": "Brands",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Is Dior Sauvage worth it?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"is dior sauvage worth it\" (not carried by Yoovic)",
+   "intent": "commercial",
+   "target_month": "Oct 2026",
+   "topic": "Brands",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "How much cologne should you spray?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"how much versace eros to spray\"; Google Autocomplete (US, en, fetched 2026-10-13), seed: \"how much bleu de chanel to spray\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Application",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Why is cologne so expensive?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"why cologne so expensive\"",
+   "intent": "informational",
+   "target_month": "Nov 2026",
+   "topic": "Basics",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Is cologne the same as perfume?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"is cologne the same as perfume\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Basics",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "What cologne does Drake wear?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"what cologne does drake wear\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Celebrities",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Where to buy cologne samples / sampler sets?",
+   "source": "Google Trends US, related queries for \"cologne\", past 30 days (fetched 2026-10-13) (rising: \"cologne sampler set\" +50%, \"sephora cologne sampler\" +40%)",
+   "intent": "commercial",
+   "target_month": "Nov 2026",
+   "topic": "Buying",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Which men's cologne has pheromones?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"which men's cologne has pheromones\"",
+   "intent": "informational",
+   "target_month": "Oct 2026",
+   "topic": "Basics",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  },
+  {
+   "question": "Which cologne is best for summer?",
+   "source": "Google Autocomplete (US, en, fetched 2026-10-13), seed: \"which cologne is best for summer\"",
+   "intent": "commercial",
+   "target_month": "May 2027",
+   "topic": "Seasons",
+   "post": null,
+   "home_answer": null,
+   "product": null
+  }
+ ]
+}

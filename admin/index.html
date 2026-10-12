@@ -8,6 +8,7 @@
 <form id="pf" hidden><h2 id="ptitle">Edit post</h2><div class="g2"><label>Title<input name="title" required></label><label>Slug (URL)<input name="slug" pattern="[a-z0-9][a-z0-9-]+" required></label>
 <label>Publish date &amp; time (your local time)<input name="date" type="datetime-local" required></label><label>Status<select name="status"><option value="draft">Draft</option><option value="published">Published</option></select></label>
 <label>Category<select name="category" id="pcat"></select></label><label>Image (URL or product:slug)<input name="image" placeholder="product:bleu-de-chanel-edt"></label></div>
+<label>Question this post answers (shown under the title; start the body with "**Short answer:** …")<input name="question" placeholder="e.g. Does cologne expire?"></label>
 <label>Description (SEO, ~155 chars)<textarea name="description" rows="2" maxlength="300"></textarea></label>
 <label>Body (Markdown)<textarea name="body" rows="22"></textarea></label>
 <details class="help"><summary>Formatting &amp; product shortcodes</summary><p>Use <code>## Heading</code>, <code>- list</code>, <code>**bold**</code>, <code>[link](/shop/)</code>. Put a product card with a Purchase Now button on its own line: <code>{{product:slug}}</code>. Click to insert:</p><div id="slugs" class="chips"></div>

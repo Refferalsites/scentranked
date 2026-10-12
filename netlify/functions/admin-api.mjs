@@ -5,7 +5,7 @@ const SECRETS = ["ADMIN_USERNAME", "ADMIN_PASSWORD_SHA256", "SESSION_SECRET", "G
 const q = (s) => JSON.stringify(String(s ?? ""));   // JSON string == valid YAML scalar
 const SLUG = /^[a-z0-9][a-z0-9-]{1,80}$/;
 function frontmatter(p) {
-  const lines = ["---", `title: ${q(p.title)}`, `date: ${q(p.date)}`, `description: ${q(p.description)}`, `image: ${q(p.image)}`, `category: ${q(p.category)}`, `status: ${p.status === "published" ? "published" : "draft"}`, "---", ""];
+  const lines = ["---", `title: ${q(p.title)}`, `date: ${q(p.date)}`, `description: ${q(p.description)}`, `image: ${q(p.image)}`, `question: ${q(p.question)}`, `category: ${q(p.category)}`, `status: ${p.status === "published" ? "published" : "draft"}`, "---", ""];
   return lines.join("\n") + String(p.body || "").replace(/\r\n/g, "\n").trim() + "\n";
 }
 function parseFront(t) {
