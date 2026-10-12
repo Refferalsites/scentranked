@@ -14,7 +14,15 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(BASE, "data", "products.json")
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
 TODAY = datetime.date.today().isoformat()
-P = json.load(open(SRC))
+_raw = json.load(open(SRC))
+P = {p["key"]: p for p in (_raw["products"] if isinstance(_raw, dict) else [dict(x, key=k) for k, x in enumerate(_raw)])}
+SETTINGS = json.load(open(os.path.join(BASE, "data", "settings.json")))
+SEOS = SETTINGS.get("seo", {})
+if SETTINGS.get("site_name"): SITE_NAME = SETTINGS["site_name"]
+if SETTINGS.get("contact_email"): CONTACT_EMAIL = SETTINGS["contact_email"]
+if SETTINGS.get("affiliate_params"):
+    from urllib.parse import parse_qsl
+    AFFILIATE_PARAMS = dict(parse_qsl(SETTINGS["affiliate_params"].lstrip("?")))
 esc = html.escape
 
 def buy_url(u):
@@ -141,8 +149,8 @@ ROUNDUPS = [
    h="Designer quality without the designer markup.", ids=[48,47,0,26,31,40,9,4,1,30],
    intro="Every pick here is under $100 at Yoovic at the time we checked (prices change, so confirm on the product page). Sorted roughly by how much fragrance you get for the money."),
 ]
-SOCIAL = {"Instagram": "#", "TikTok": "#", "Pinterest": "#", "X": "#"}   # set real profile URLs
-ANNOUNCE = "Free shipping on every order at Yoovic · Expedited US shipping available"
+SOCIAL = {n: (SETTINGS.get("social", {}).get(n.lower()) or "#") for n in ["Instagram", "TikTok", "Pinterest", "X"]}   # edit in /admin > Settings
+ANNOUNCE = SETTINGS.get("announcement") or "Free shipping on every order at Yoovic · Expedited US shipping available"
 YEAR = datetime.date.today().year
 BLOG_CATS = ["Cologne Guides", "Buying Tips", "Seasonal Picks"]
 POSTS = []
@@ -152,7 +160,7 @@ def pnum(i): return float(re.sub(r"[^\d.]","",P[i]["price"]))
 def slugify(s): return re.sub(r"[^a-z0-9]+","-",s.lower()).strip("-")
 CSS = open(os.path.join(BASE,"style.css")).read()
 BRANDS = sorted({f["brand"] for f in F.values()})
-TOP = [14,47,32,2,48,0,26,36]
+TOP = [i for i in F if P.get(i, {}).get("featured")] or [14,47,32,2,48,0,26,36]
 OCC = {"best-compliment-getting-colognes":"Compliment-getters","best-date-night-colognes":"Date night","best-summer-colognes":"Summer","best-colognes-under-100":"Under $100"}
 
 def occasions(i):
@@ -236,6 +244,39 @@ def footer():
 <p class="legal">© {YEAR} {SITE_NAME} · <a href="/privacy/">Privacy</a> · <a href="/affiliate-disclosure/">Disclosure</a> · <a href="/sitemap.xml">Sitemap</a></p></div></footer>"""
 
 FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://yoovic.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">'
+def _head_extra():
+    h = ""
+    v = SEOS.get("google_site_verification", "").strip()
+    if v:
+        m = re.search(r'content="([^"]+)"', v); v = m.group(1) if m else v
+        h += f'<meta name="google-site-verification" content="{esc(v)}">'
+    v = SEOS.get("bing_site_verification", "").strip()
+    if v: h += f'<meta name="msvalidate.01" content="{esc(v)}">'
+    gtm = SEOS.get("gtm_id", "").strip(); ga = SEOS.get("ga4_id", "").strip()
+    if gtm and re.fullmatch(r"GTM-[A-Z0-9]+", gtm):
+        h += "<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','" + gtm + "');</script>"
+    elif ga and re.fullmatch(r"G-[A-Z0-9]+", ga):
+        h += f'<script async src="https://www.googletagmanager.com/gtag/js?id={ga}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","{ga}");</script>'
+    return h
+HEAD_EXTRA = _head_extra()
+URL_HASH = {}
+
+def merchant_feed():
+    items = []
+    for i in F:
+        p = P[i]
+        if not p.get("in_merchant_feed", True): continue
+        f = F[i]
+        sale = p.get("compare_at_price")
+        pr = f"{pnum(i):.2f} USD"
+        price_xml = f"<g:price>{float(re.sub(r'[^0-9.]','',sale)):.2f} USD</g:price><g:sale_price>{pr}</g:sale_price>" if sale else f"<g:price>{pr}</g:price>"
+        extra = "".join(f"<g:additional_image_link>{esc(g)}</g:additional_image_link>" for g in (p.get("gallery") or [])[1:10])
+        items.append(f"""<item><g:id>yoovic-{esc(p['url'].rstrip('/').split('/')[-1])}</g:id><title>{esc(p['name'][:150])}</title><description>{esc((p.get('description') or f['take'])[:4900])}</description>
+<link>{esc(buy_url(p['url']))}</link><g:image_link>{esc(p['image'])}</g:image_link>{extra}{price_xml}<g:availability>in_stock</g:availability><g:condition>new</g:condition>
+<g:brand>{esc(f['brand'])}</g:brand><g:identifier_exists>no</g:identifier_exists><g:google_product_category>{esc(str(SEOS.get('google_product_category') or '479'))}</g:google_product_category><g:product_type>Fragrance &gt; Men's Cologne</g:product_type>
+<g:gender>{'male' if p.get('gender')=='men' else 'unisex'}</g:gender><g:age_group>adult</g:age_group><g:shipping><g:country>US</g:country><g:price>0.00 USD</g:price></g:shipping></item>""")
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"><channel><title>{SITE_NAME} product feed</title><link>{SITE_URL}/</link><description>{SITE_NAME} men\'s cologne picks</description>\n' + "\n".join(items) + "\n</channel></rss>\n"
+
 def page(path, title, desc, body, schema=None, ogimg=None, js=False, full=False):
     url = SITE_URL + "/" + path.replace("index.html","")
     sch = "".join(f'<script type="application/ld+json">{json.dumps(s)}</script>' for s in (schema or []))
@@ -244,9 +285,10 @@ def page(path, title, desc, body, schema=None, ogimg=None, js=False, full=False)
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/favicon.svg">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{SITE_NAME}"><meta property="og:locale" content="en_US"><meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}">{f'<meta property="og:image" content="{ogimg}">' if ogimg else ''}
-<meta name="twitter:card" content="summary_large_image">{FONTS}<link rel="stylesheet" href="/style.css"><link rel="alternate" type="application/rss+xml" title="{SITE_NAME} Blog" href="/rss.xml">{sch}</head><body>
+<meta name="twitter:card" content="summary_large_image">{HEAD_EXTRA}{FONTS}<link rel="stylesheet" href="/style.css"><link rel="alternate" type="application/rss+xml" title="{SITE_NAME} Blog" href="/rss.xml">{sch}</head><body>
 {header()}<main id="main" class="{'' if full else 'wrap'}">{body}</main>{footer()}{'<script src="/shop.js" defer></script>' if js else ''}<script src="/site.js" defer></script></body></html>"""
     f = os.path.join(OUT, path); os.makedirs(os.path.dirname(f), exist_ok=True); open(f,"w").write(doc)
+    import hashlib; URL_HASH[url] = hashlib.sha1(re.sub(r"\d{4}-\d{2}-\d{2}", "", doc).encode()).hexdigest()[:16]
     return url
 
 SHOP_JS = r"""(function(){var g=document.getElementById('pgrid');if(!g)return;var cards=[].slice.call(g.children),f=document.getElementById('filters'),q=new URLSearchParams(location.search);
@@ -263,6 +305,9 @@ def build():
     POSTS = load_posts()
     if os.path.exists(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT); open(os.path.join(OUT,"style.css"),"w").write(CSS)
+    shutil.copytree(os.path.join(BASE, "admin"), os.path.join(OUT, "admin"))
+    json.dump({"products":[{"slug":F[i]["slug"],"name":F[i]["short"],"key":i} for i in F],"categories":BLOG_CATS}, open(os.path.join(OUT,"admin","meta.json"),"w"))
+    if SEOS.get("merchant_feed_enabled", True): open(os.path.join(OUT, "merchant-feed.xml"), "w").write(merchant_feed())
     open(os.path.join(OUT,"shop.js"),"w").write(SHOP_JS); open(os.path.join(OUT,"site.js"),"w").write(SITE_JS)
     open(os.path.join(OUT,"favicon.svg"),"w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#0d0c0a"/>'+LOGO_MARK.replace('<svg class="mark" viewBox="0 0 40 48" aria-hidden="true">','<g transform="translate(5 1) scale(.95)">').replace('</svg>','</g>')+'</svg>')
     open(os.path.join(OUT,"logo.svg"),"w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48">'+LOGO_MARK.replace('<svg class="mark" viewBox="0 0 40 48" aria-hidden="true">','<g>').replace('</svg>','</g>')+'<text x="50" y="33" font-family="Georgia,serif" font-size="26" fill="#f4efe6">Scent<tspan fill="#d4a85a" font-style="italic">Ranked</tspan></text></svg>')
@@ -364,7 +409,10 @@ def build():
     urls += build_blog()
     page("404.html",f"Page not found | {SITE_NAME}","Page not found",'<section class="prose static"><h1>Page not found</h1><p><a class="btn" href="/shop/">Shop colognes</a></p></section>')
     open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n" for u in urls)+"</urlset>\n")
-    open(os.path.join(OUT,"robots.txt"),"w").write(f"User-agent: *\nAllow: /\nDisallow: /thanks/\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+    ik = re.sub(r"[^a-zA-Z0-9-]", "", SEOS.get("indexnow_key", ""))
+    if ik: open(os.path.join(OUT, f"{ik}.txt"), "w").write(ik)
+    json.dump({"indexnow_key": ik, "urls": {u: URL_HASH[u] for u in urls if u in URL_HASH}}, open(os.path.join(OUT, "indexnow-urls.json"), "w"))
+    open(os.path.join(OUT,"robots.txt"),"w").write(f"User-agent: *\nAllow: /\nDisallow: /thanks/\nDisallow: /admin/\n\nSitemap: {SITE_URL}/sitemap.xml\n")
     print(len(urls),"pages in sitemap")
 # ===== BLOG =====
 # content/blog/*.md with front matter. Skipped if status != published or date is in the future.
@@ -378,6 +426,18 @@ def parse_date(s):
     return d
 
 def front(text):
+    m = re.match(r"^---\s*\n(.*?)\n---\s*\n(.*)$", text, re.S)
+    if m:
+        try:
+            import yaml
+            meta = yaml.safe_load(m.group(1)) or {}
+            meta = {k: (v.isoformat() if hasattr(v, "isoformat") else ("" if v is None else str(v) if not isinstance(v, str) else v)) for k, v in meta.items()}
+            return meta, m.group(2)
+        except Exception:
+            pass
+    return _front_simple(text)
+
+def _front_simple(text):
     m = re.match(r"^---\s*\n(.*?)\n---\s*\n(.*)$", text, re.S)
     if not m: raise ValueError("missing front matter")
     meta = {}

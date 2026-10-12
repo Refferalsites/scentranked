@@ -1,0 +1,22 @@
+{
+ "site_name": "ScentRanked",
+ "announcement": "Free shipping on every order at Yoovic \u00b7 Expedited US shipping available",
+ "contact_email": "hello@scentranked.example",
+ "affiliate_params": "",
+ "social": {
+  "instagram": "",
+  "tiktok": "",
+  "pinterest": "",
+  "x": ""
+ },
+ "seo": {
+  "google_site_verification": "",
+  "bing_site_verification": "",
+  "ga4_id": "",
+  "gtm_id": "",
+  "merchant_center_id": "",
+  "merchant_feed_enabled": true,
+  "google_product_category": "479",
+  "indexnow_key": "7c7092545ca8e4db2c00523b855c7d10"
+ }
+}
