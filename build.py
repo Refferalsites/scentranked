@@ -336,7 +336,8 @@ def build():
     promos=[("best-compliment-getting-colognes","Top Colognes of "+str(YEAR),"The compliment-getters",47),("best-colognes-under-100","Under $100 Picks","Designer scents, sensible prices",48),("best-date-night-colognes","Date Night","Warm, close, unforgettable",32),("best-summer-colognes","Summer Fresh","Scents that survive the heat",2)]
     pr="".join(f'<a class="promo" href="/{s}/"><img src="{P[i]["image"]}" alt="" width="300" height="300" loading="lazy"><div><small>{esc(sub)}</small><strong>{esc(t)}</strong><span>Shop the list →</span></div></a>' for s,t,sub,i in promos)
     brs="".join(f'<a href="/brands/{slugify(b)}/">{esc(b)}</a>' for b in BRANDS)
-    def pcards(lst): return "".join(f'<a class="post-card v" href="/blog/{x["slug"]}/">{f'<img src="{esc(x["img"])}" alt="" width="400" height="250" loading="lazy">' if x.get("img") else ''}<div><p class="small">{esc(x.get("category",""))} · {x["dt"].strftime("%b %-d, %Y")}</p><h3>{esc(x["title"])}</h3><p>{esc(x.get("description",""))}</p></div></a>' for x in lst)
+    def pimg(x): return f'<img src="{esc(x["img"])}" alt="" width="400" height="250" loading="lazy">' if x.get("img") else ""
+    def pcards(lst): return "".join(f'<a class="post-card v" href="/blog/{x["slug"]}/">{pimg(x)}<div><p class="small">{esc(x.get("category",""))} · {x["dt"].strftime("%b %-d, %Y")}</p><h3>{esc(x["title"])}</h3><p>{esc(x.get("description",""))}</p></div></a>' for x in lst)
     secs=[("Latest Articles","/blog/",POSTS[:4])]+[(c,f"/blog/category/{slugify(c)}/",[x for x in POSTS if x.get("category")==c][:4]) for c in BLOG_CATS]
     blogsecs="".join(f'<section class="sec blogsec{" alt" if k%2 else ""}"><div class="shead"><h2 class="h2">{esc(t)}</h2><a href="{u}">View all →</a></div><div class="posts four">{pcards(l)}</div></section>' for k,(t,u,l) in enumerate(secs) if l)
     body=f"""<section class="hero"><div class="wrap hgrid"><div class="htxt"><p class="kicker">The {YEAR} Edit · Best Designer Colognes for Men</p><h1>Find the cologne that<br><em>gets you noticed.</em></h1>
@@ -457,7 +458,8 @@ def build_blog():
         lst=[x for x in posts if x.get("category")==c]; s=slugify(c)
         urls.append(page(f"blog/category/{s}/index.html", f"{c}: Men's Cologne Articles | {SITE_NAME}", f"{c} from the {SITE_NAME} blog: practical articles on men's cologne.",
             f'{crumb_html([("Home","/"),("Blog","/blog/"),(c,None)])}<h1>{esc(c)}</h1>{cats_nav(c)}<div class="posts">{plist(lst)}</div>',[crumbs([("Home","/"),("Blog","/blog/"),(c,f"/blog/category/{s}/")])]))
-    items = "".join(f"<item><title>{esc(p['title'])}</title><link>{SITE_URL}/blog/{p['slug']}/</link><guid>{SITE_URL}/blog/{p['slug']}/</guid><pubDate>{email.utils.format_datetime(p['dt'])}</pubDate>{f'<category>{esc(p.get(chr(99)+'ategory'))}</category>' if p.get('category') else ''}<description>{esc(p.get('description',''))}</description></item>" for p in posts)
+    def rcat(p): return f"<category>{esc(p['category'])}</category>" if p.get("category") else ""
+    items = "".join(f"<item><title>{esc(p['title'])}</title><link>{SITE_URL}/blog/{p['slug']}/</link><guid>{SITE_URL}/blog/{p['slug']}/</guid><pubDate>{email.utils.format_datetime(p['dt'])}</pubDate>{rcat(p)}<description>{esc(p.get('description',''))}</description></item>" for p in posts)
     open(os.path.join(OUT, "rss.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>{SITE_NAME} Blog</title><link>{SITE_URL}/blog/</link><description>Men\'s cologne guides</description>{items}</channel></rss>\n')
     print(f"  blog: {len(posts)} published")
     return urls
