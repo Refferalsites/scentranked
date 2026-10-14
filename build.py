@@ -352,7 +352,7 @@ def page(path, title, desc, body, schema=None, ogimg=None, js=False, full=False,
     sch = "".join(f'<script type="application/ld+json">{json.dumps(s)}</script>' for s in (schema or []))
     doc = f"""<!doctype html><html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0d0c0a">{'<meta name="robots" content="noindex,follow">' if noindex else ''}
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{SITE_NAME}"><meta property="og:locale" content="en_US"><meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}">{f'<meta property="og:image" content="{ogimg}">' if ogimg else ''}
 <meta name="twitter:card" content="summary_large_image">{HEAD_EXTRA}{FONTS}<link rel="stylesheet" href="/style.css"><link rel="alternate" type="application/rss+xml" title="{SITE_NAME} Blog" href="/rss.xml">{sch}</head><body>
@@ -380,6 +380,9 @@ def build():
     json.dump({"products":[{"slug":F[i]["slug"],"name":F[i]["short"],"key":i} for i in F],"categories":BLOG_CATS}, open(os.path.join(OUT,"admin","meta.json"),"w"))
     if SEOS.get("merchant_feed_enabled", True): open(os.path.join(OUT, "merchant-feed.xml"), "w").write(merchant_feed())
     open(os.path.join(OUT,"shop.js"),"w").write(SHOP_JS); open(os.path.join(OUT,"site.js"),"w").write(SITE_JS)
+    for fn in os.listdir(os.path.join(BASE,"static")): shutil.copy(os.path.join(BASE,"static",fn), os.path.join(OUT,fn))
+    shutil.copy(os.path.join(BASE,"static","favicon-32x32.png"), os.path.join(OUT,"favicon.ico"))
+    json.dump({"name":SITE_NAME,"short_name":SITE_NAME,"icons":[{"src":"/icon-192.png","sizes":"192x192","type":"image/png"},{"src":"/icon-512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#0d0c0a","background_color":"#0d0c0a","display":"standalone"},open(os.path.join(OUT,"site.webmanifest"),"w"))
     open(os.path.join(OUT,"favicon.svg"),"w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#0d0c0a"/>'+LOGO_MARK.replace('<svg class="mark" viewBox="0 0 40 48" aria-hidden="true">','<g transform="translate(5 1) scale(.95)">').replace('</svg>','</g>')+'</svg>')
     open(os.path.join(OUT,"logo.svg"),"w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48">'+LOGO_MARK.replace('<svg class="mark" viewBox="0 0 40 48" aria-hidden="true">','<g>').replace('</svg>','</g>')+'<text x="50" y="33" font-family="Georgia,serif" font-size="26" fill="#f4efe6">Scent<tspan fill="#d4a85a" font-style="italic">Ranked</tspan></text></svg>')
     urls=[]
