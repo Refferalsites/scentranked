@@ -1,0 +1,27 @@
+name: Price sync
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Sync products from Yoovic
+        run: python3 sync_products.py
+      - name: Commit if changed
+        run: |
+          git config user.name "scentranked-bot"
+          git config user.email "341540938+Refferalsites@users.noreply.github.com"
+          git add data/products.json data/sync_report.json data/price_history.json
+          if git diff --cached --quiet; then
+            echo "No product data changes"
+          else
+            git commit -m "chore: sync product prices from Yoovic ($(date -u +%Y-%m-%d))"
+            git push
+          fi

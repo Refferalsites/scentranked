@@ -32,6 +32,17 @@ export default async (req) => {
     if (a === "delete-post") { if (!SLUG.test(body.slug || "")) return json({ error: "Bad slug" }, 400);
       await ghDelete(`content/blog/${body.slug}.md`, `Delete post: ${body.slug} (admin)`, body.sha); return json({ ok: true }); }
     if (a === "products") { const f = await ghGet("data/products.json"); return json({ sha: f.sha, ...JSON.parse(f.text) }); }
+    if (a === "sync-now") {
+      if (req.method !== "POST") return json({ error: "POST required" }, 405);
+      const hd = { authorization: `Bearer ${process.env.GITHUB_TOKEN}`, accept: "application/vnd.github+json", "user-agent": "scentranked-admin" };
+      const r = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/price-sync.yml/dispatches`, { method: "POST", headers: { ...hd, "content-type": "application/json" }, body: JSON.stringify({ ref: "main" }) });
+      if (r.status !== 204) return json({ error: `GitHub returned ${r.status}` }, 502);
+      return json({ ok: true, runs: `https://github.com/${REPO}/actions/workflows/price-sync.yml` });
+    }
+    if (a === "sync-runs") {
+      const r = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/price-sync.yml/runs?per_page=5`, { headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}`, accept: "application/vnd.github+json", "user-agent": "scentranked-admin" } });
+      const d = await r.json(); return json({ runs: (d.workflow_runs || []).map((x) => ({ status: x.status, conclusion: x.conclusion, created_at: x.created_at, url: x.html_url })) });
+    }
     if (a === "save-products") { if (!Array.isArray(body.products)) return json({ error: "products must be an array" }, 400);
       for (const p of body.products) { if (!/^https:\/\/(www\.)?yoovic\.com\//.test(p.url || "")) return json({ error: `Product URL must be a yoovic.com URL: ${p.name}` }, 400); }
       const r = await ghPut("data/products.json", JSON.stringify({ products: body.products }, null, 1) + "\n", "Update products (admin)", body.sha); return json({ ok: true, sha: r.content.sha }); }

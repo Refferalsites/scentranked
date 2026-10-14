@@ -1,22 +1,23 @@
 {
- "site_name": "ScentRanked",
- "announcement": "Free shipping on every order at Yoovic \u00b7 Expedited US shipping available",
- "contact_email": "hello@scentranked.example",
- "affiliate_params": "",
- "social": {
-  "instagram": "",
-  "tiktok": "",
-  "pinterest": "",
-  "x": ""
- },
- "seo": {
-  "google_site_verification": "FeOnwMIh4wH_k4oLNmx0ZMHSMNuRQh1aA2vvMi5YmXY",
-  "bing_site_verification": "",
-  "ga4_id": "",
-  "gtm_id": "",
-  "merchant_center_id": "",
-  "merchant_feed_enabled": true,
-  "google_product_category": "479",
-  "indexnow_key": "7c7092545ca8e4db2c00523b855c7d10"
- }
+  "site_name": "ScentRanked",
+  "announcement": "Shipping: check each Yoovic product page for Free Shipping / Expedited options · Purchases & returns handled by Yoovic",
+  "contact_email": "",
+  "affiliate_params": "",
+  "social": {
+    "instagram": "",
+    "tiktok": "",
+    "pinterest": "",
+    "x": ""
+  },
+  "seo": {
+    "google_site_verification": "FeOnwMIh4wH_k4oLNmx0ZMHSMNuRQh1aA2vvMi5YmXY",
+    "bing_site_verification": "",
+    "ga4_id": "",
+    "gtm_id": "",
+    "merchant_center_id": "",
+    "merchant_feed_enabled": true,
+    "google_product_category": "479",
+    "indexnow_key": "7c7092545ca8e4db2c00523b855c7d10"
+  },
+  "contact_note": "Site owner: Shakeel Mohsin. For orders, returns and shipping questions, contact Yoovic (seller@yoovic.com / support@yoovic.com)."
 }

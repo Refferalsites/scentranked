@@ -1,5 +1,5 @@
 [build]
-  command = "python3 build.py"
+  command = "python3 build.py && python3 check_duplicates.py"
   publish = "public"
 
 [functions]

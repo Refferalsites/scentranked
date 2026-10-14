@@ -94,3 +94,7 @@ body:has(.mbuy) .ftr{padding-bottom:80px}
 .faq div{padding-bottom:16px;color:var(--mut)}.faq div p{margin:.3em 0 .8em}.faqlinks{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .qline{display:flex;gap:10px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:10px 14px;font-weight:500}.qline span{color:var(--gold);font:700 18px var(--serif)}
 .qtopic{border-top:1px solid var(--line);padding:16px 0}.qtopic h2{margin:.2em 0}.qlist{columns:1;gap:30px;padding-left:18px}.qlist li{margin:6px 0;break-inside:avoid}@media(min-width:900px){.qlist{columns:2}}
+
+.nc{color:#e7b26a;font-style:italic}.disc-near{font-size:12px;color:var(--mut);margin:10px 0 0}.pchk{font-size:11px;color:var(--mut);margin:-6px 0 8px}
+.faqs.one{grid-template-columns:1fr!important}.cmp{width:100%;border-collapse:collapse;font-size:14px}.cmp th,.cmp td{border-bottom:1px solid var(--line);padding:8px;text-align:left}
+blockquote{border-left:3px solid var(--line);margin:10px 0;padding:6px 14px}

@@ -1,0 +1,797 @@
+{
+ "meta": {
+  "fetched": "2026-10-14",
+  "source": "Google Autocomplete suggestqueries.google.com (gl=us, hl=en)",
+  "note": "Search suggestions, not customer questions. No volumes implied.",
+  "method": "One question per intent pattern, filtered to the exact product (other flankers, retailers and countries excluded). Answers are rendered from verified data at build time."
+ },
+ "products": {
+  "bleu-de-chanel-edt": [
+   {
+    "question": "Does bleu de chanel smell good?",
+    "pattern": "smell",
+    "source": "Google Autocomplete (US), seed \"does bleu de chanel\""
+   },
+   {
+    "question": "Is bleu de chanel for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is bleu de chanel\""
+   },
+   {
+    "question": "Is bleu de chanel parfum a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is bleu de chanel\""
+   },
+   {
+    "question": "Does bleu de chanel last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does bleu de chanel\""
+   },
+   {
+    "question": "Is bleu de chanel eau de parfum for men?",
+    "pattern": "concentration",
+    "source": "Google Autocomplete (US), seed \"is bleu de chanel\""
+   },
+   {
+    "question": "Does bleu de chanel ever go on sale?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"does bleu de chanel\""
+   },
+   {
+    "question": "Is bleu de chanel good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is bleu de chanel\""
+   },
+   {
+    "question": "When did bleu de chanel come out?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"when bleu de chanel\""
+   },
+   {
+    "question": "Is bleu de chanel refillable?",
+    "pattern": "refill",
+    "source": "Google Autocomplete (US), seed \"is bleu de chanel\""
+   },
+   {
+    "question": "How to know original bleu de chanel?",
+    "pattern": "authentic",
+    "source": "Google Autocomplete (US), seed \"when bleu de chanel\""
+   }
+  ],
+  "versace-eros-edt": [
+   {
+    "question": "Does versace eros smell good?",
+    "pattern": "smell",
+    "source": "Google Autocomplete (US), seed \"does versace eros\""
+   },
+   {
+    "question": "Is versace eros for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is versace eros\""
+   },
+   {
+    "question": "Is versace eros a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is versace eros\""
+   },
+   {
+    "question": "Does versace eros last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does versace eros\""
+   },
+   {
+    "question": "What is versace eros eau de toilette?",
+    "pattern": "concentration",
+    "source": "Google Autocomplete (US), seed \"what versace eros\""
+   },
+   {
+    "question": "How much versace eros perfume?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how versace eros\""
+   },
+   {
+    "question": "Is versace eros good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is versace eros\""
+   },
+   {
+    "question": "When did versace eros come out?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"when versace eros\""
+   },
+   {
+    "question": "Can versace eros be refilled?",
+    "pattern": "refill",
+    "source": "Google Autocomplete (US), seed \"can versace eros\""
+   },
+   {
+    "question": "How to tell if versace eros is real?",
+    "pattern": "authentic",
+    "source": "Google Autocomplete (US), seed \"which versace eros\""
+   }
+  ],
+  "versace-eros-flame": [
+   {
+    "question": "Does versace eros flame smell good?",
+    "pattern": "smell",
+    "source": "Google Autocomplete (US), seed \"does versace eros flame\""
+   },
+   {
+    "question": "Is versace eros flame for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is versace eros flame\""
+   },
+   {
+    "question": "Is versace eros flame a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is versace eros flame\""
+   },
+   {
+    "question": "Does versace eros flame last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does versace eros flame\""
+   },
+   {
+    "question": "How much versace eros flame to spray?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how versace eros flame\""
+   },
+   {
+    "question": "Is versace eros flame good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is versace eros flame\""
+   },
+   {
+    "question": "Is versace eros flame good for school?",
+    "pattern": "occasion",
+    "source": "Google Autocomplete (US), seed \"is versace eros flame\""
+   },
+   {
+    "question": "Is versace eros flame discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is versace eros flame\""
+   }
+  ],
+  "paco-rabanne-1-million-edt": [
+   {
+    "question": "Is 1 million paco rabanne for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is 1 million paco rabanne\""
+   },
+   {
+    "question": "Is 1 million paco rabanne good for summer?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is 1 million paco rabanne\""
+   },
+   {
+    "question": "How long does 1 million paco rabanne last?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does 1 million paco rabanne\""
+   },
+   {
+    "question": "How much is 1 million paco rabanne 100ml?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"is 1 million paco rabanne\""
+   },
+   {
+    "question": "Is 1 million paco rabanne good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is 1 million paco rabanne\""
+   },
+   {
+    "question": "Is 1 million by paco rabanne discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is 1 million paco rabanne\""
+   }
+  ],
+  "paco-rabanne-1-million-parfum": [
+   {
+    "question": "Is 1 million parfum for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is 1 million parfum\""
+   },
+   {
+    "question": "Is 1 million parfum a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is 1 million parfum\""
+   },
+   {
+    "question": "Does 1 million perfume last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does 1 million parfum\""
+   },
+   {
+    "question": "How much 1 million parfum?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how 1 million parfum\""
+   },
+   {
+    "question": "Is 1 million parfum good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is 1 million parfum\""
+   },
+   {
+    "question": "Is 1 million parfum discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is 1 million parfum\""
+   }
+  ],
+  "jean-paul-gaultier-le-male-edt": [
+   {
+    "question": "Does le male smell good?",
+    "pattern": "smell",
+    "source": "Google Autocomplete (US), seed \"does le male\""
+   },
+   {
+    "question": "Is le male le parfum good for summer?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is le male\""
+   },
+   {
+    "question": "Does le male last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does le male\""
+   },
+   {
+    "question": "How much le male?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how le male\""
+   },
+   {
+    "question": "Is le male le parfum good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is le male\""
+   },
+   {
+    "question": "Is le male le parfum good for school?",
+    "pattern": "occasion",
+    "source": "Google Autocomplete (US), seed \"is le male\""
+   }
+  ],
+  "jean-paul-gaultier-le-male-le-parfum": [
+   {
+    "question": "What are jpg le male le parfum notes?",
+    "pattern": "smell",
+    "source": "Google Autocomplete (US), seed \"what le male le parfum\""
+   },
+   {
+    "question": "Is le male le parfum good for summer?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is le male le parfum\""
+   },
+   {
+    "question": "Does le male le parfum last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does le male le parfum\""
+   },
+   {
+    "question": "How much jpg le male le parfum?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how le male le parfum\""
+   },
+   {
+    "question": "Is le male le parfum good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is le male le parfum\""
+   },
+   {
+    "question": "Is le male le parfum good for school?",
+    "pattern": "occasion",
+    "source": "Google Autocomplete (US), seed \"is le male le parfum\""
+   },
+   {
+    "question": "Is le male le parfum discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is le male le parfum\""
+   }
+  ],
+  "jean-paul-gaultier-le-beau-le-parfum": [
+   {
+    "question": "Is le beau le parfum for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"does le beau le parfum\""
+   },
+   {
+    "question": "Is le beau le parfum good for winter?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is le beau le parfum\""
+   },
+   {
+    "question": "Does le beau le parfum last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does le beau le parfum\""
+   },
+   {
+    "question": "What concentration is le beau le parfum?",
+    "pattern": "concentration",
+    "source": "Google Autocomplete (US), seed \"what le beau le parfum\""
+   },
+   {
+    "question": "Is le beau le parfum good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is le beau le parfum\""
+   },
+   {
+    "question": "Is le beau le parfum good for school?",
+    "pattern": "occasion",
+    "source": "Google Autocomplete (US), seed \"is le beau le parfum\""
+   },
+   {
+    "question": "Is le beau le parfum discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is le beau le parfum\""
+   }
+  ],
+  "armani-acqua-di-gio-profondo": [
+   {
+    "question": "Is acqua di gio profondo edp a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is acqua di gio profondo\""
+   },
+   {
+    "question": "Does acqua di gio profondo last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does acqua di gio profondo\""
+   },
+   {
+    "question": "Is acqua di gio profondo good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is acqua di gio profondo\""
+   },
+   {
+    "question": "Is acqua di gio profondo discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is acqua di gio profondo\""
+   },
+   {
+    "question": "Is acqua di gio profondo refillable?",
+    "pattern": "refill",
+    "source": "Google Autocomplete (US), seed \"is acqua di gio profondo\""
+   }
+  ],
+  "bvlgari-aqva-pour-homme-marine": [
+   {
+    "question": "Is bvlgari aqva marine for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is bvlgari aqva marine\""
+   },
+   {
+    "question": "Is bvlgari aqva marine good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is bvlgari aqva marine\""
+   },
+   {
+    "question": "Is bvlgari aqva marine discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is bvlgari aqva marine\""
+   },
+   {
+    "question": "What size is this bottle?",
+    "pattern": "size",
+    "source": "Site-generated from verified listing data",
+    "note": "Derived from the product listing title (oz/ml)."
+   },
+   {
+    "question": "What concentration is this fragrance?",
+    "pattern": "concentration",
+    "source": "Site-generated from verified listing data",
+    "note": "Derived from the listing title (EDT/EDP/Parfum)."
+   }
+  ],
+  "prada-luna-rossa-ocean-le-parfum": [
+   {
+    "question": "Is prada luna rossa ocean le parfum for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is luna rossa ocean le parfum\""
+   },
+   {
+    "question": "How long does luna rossa ocean le parfum last?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does luna rossa ocean le parfum\""
+   },
+   {
+    "question": "What size is this bottle?",
+    "pattern": "size",
+    "source": "Site-generated from verified listing data",
+    "note": "Derived from the product listing title (oz/ml)."
+   },
+   {
+    "question": "What concentration is this fragrance?",
+    "pattern": "concentration",
+    "source": "Site-generated from verified listing data",
+    "note": "Derived from the listing title (EDT/EDP/Parfum)."
+   },
+   {
+    "question": "How should I store this cologne?",
+    "pattern": "care",
+    "source": "Site-generated from verified listing data",
+    "note": "General fragrance care advice; not product-specific."
+   }
+  ],
+  "montblanc-legend-blue-edp": [
+   {
+    "question": "Is montblanc legend blue a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is montblanc legend blue\""
+   },
+   {
+    "question": "How long does montblanc legend blue last?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does montblanc legend blue\""
+   },
+   {
+    "question": "How much is montblanc legend blue?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how montblanc legend blue\""
+   },
+   {
+    "question": "Is montblanc legend blue good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is montblanc legend blue\""
+   },
+   {
+    "question": "When did montblanc legend blue come out?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"when montblanc legend blue\""
+   }
+  ],
+  "azzaro-wanted-edt": [
+   {
+    "question": "Does azzaro wanted smell good?",
+    "pattern": "smell",
+    "source": "Google Autocomplete (US), seed \"does azzaro wanted\""
+   },
+   {
+    "question": "Is azzaro wanted for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"does azzaro wanted\""
+   },
+   {
+    "question": "Is azzaro wanted a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is azzaro wanted\""
+   },
+   {
+    "question": "Does azzaro wanted last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does azzaro wanted\""
+   },
+   {
+    "question": "How much is azzaro wanted by night?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how azzaro wanted\""
+   },
+   {
+    "question": "Is azzaro wanted good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is azzaro wanted\""
+   },
+   {
+    "question": "Is azzaro wanted by night discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is azzaro wanted\""
+   }
+  ],
+  "azzaro-the-most-wanted-parfum": [
+   {
+    "question": "What notes are in azzaro the most wanted parfum?",
+    "pattern": "smell",
+    "source": "Google Autocomplete (US), seed \"what azzaro the most wanted parfum\""
+   },
+   {
+    "question": "Is azzaro the most wanted parfum for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"does azzaro the most wanted parfum\""
+   },
+   {
+    "question": "Is azzaro the most wanted parfum a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is azzaro the most wanted parfum\""
+   },
+   {
+    "question": "Does azzaro the most wanted parfum last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does azzaro the most wanted parfum\""
+   },
+   {
+    "question": "What concentration is azzaro the most wanted parfum?",
+    "pattern": "concentration",
+    "source": "Google Autocomplete (US), seed \"what azzaro the most wanted parfum\""
+   },
+   {
+    "question": "How much is azzaro the most wanted parfum?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how azzaro the most wanted parfum\""
+   },
+   {
+    "question": "Is azzaro the most wanted parfum good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is azzaro the most wanted parfum\""
+   },
+   {
+    "question": "Is azzaro the most wanted parfum good for school?",
+    "pattern": "occasion",
+    "source": "Google Autocomplete (US), seed \"is azzaro the most wanted parfum\""
+   },
+   {
+    "question": "Is azzaro the most wanted parfum discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is azzaro the most wanted parfum\""
+   },
+   {
+    "question": "Can you refill azzaro the most wanted parfum?",
+    "pattern": "refill",
+    "source": "Google Autocomplete (US), seed \"can azzaro the most wanted parfum\""
+   }
+  ],
+  "carolina-herrera-212-men": [
+   {
+    "question": "Is 212 men a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is 212 men\""
+   },
+   {
+    "question": "How long does 212 men nyc last?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does 212 men\""
+   },
+   {
+    "question": "How much is 212 men perfume?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"is 212 men\""
+   },
+   {
+    "question": "Is 212 men perfume good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is 212 men\""
+   },
+   {
+    "question": "Is 212 men discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"does 212 men\""
+   }
+  ],
+  "valentino-uomo-born-in-roma-the-gold": [
+   {
+    "question": "Is valentino born in roma the gold for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is born in roma the gold\""
+   },
+   {
+    "question": "Is valentino born in roma the gold discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is born in roma the gold\""
+   },
+   {
+    "question": "What size is this bottle?",
+    "pattern": "size",
+    "source": "Site-generated from verified listing data",
+    "note": "Derived from the product listing title (oz/ml)."
+   },
+   {
+    "question": "What concentration is this fragrance?",
+    "pattern": "concentration",
+    "source": "Site-generated from verified listing data",
+    "note": "Derived from the listing title (EDT/EDP/Parfum)."
+   },
+   {
+    "question": "How should I store this cologne?",
+    "pattern": "care",
+    "source": "Site-generated from verified listing data",
+    "note": "General fragrance care advice; not product-specific."
+   }
+  ],
+  "chanel-allure-homme-sport-extreme": [
+   {
+    "question": "Is allure homme sport eau extreme good for summer?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is allure homme sport eau extreme\""
+   },
+   {
+    "question": "How long does allure homme sport eau extreme last?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does allure homme sport eau extreme\""
+   },
+   {
+    "question": "Is allure homme sport eau extreme good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is allure homme sport eau extreme\""
+   },
+   {
+    "question": "Is chanel allure homme sport eau extreme discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is allure homme sport eau extreme\""
+   },
+   {
+    "question": "Is chanel allure homme sport eau extreme refillable?",
+    "pattern": "refill",
+    "source": "Google Autocomplete (US), seed \"is allure homme sport eau extreme\""
+   }
+  ],
+  "creed-silver-mountain-water": [
+   {
+    "question": "Does creed silver mountain water smell good?",
+    "pattern": "smell",
+    "source": "Google Autocomplete (US), seed \"does silver mountain water\""
+   },
+   {
+    "question": "Is silver mountain water for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is silver mountain water\""
+   },
+   {
+    "question": "Is silver mountain water a winter fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is silver mountain water\""
+   },
+   {
+    "question": "Does silver mountain water last?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does silver mountain water\""
+   },
+   {
+    "question": "How much is silver mountain water park?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how silver mountain water\""
+   },
+   {
+    "question": "Is silver mountain water worth it?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is silver mountain water\""
+   },
+   {
+    "question": "When did silver mountain water come out?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"does silver mountain water\""
+   }
+  ],
+  "creed-royal-oud": [
+   {
+    "question": "Is creed royal oud unisex?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is creed royal oud\""
+   },
+   {
+    "question": "Is creed royal oud a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is creed royal oud\""
+   },
+   {
+    "question": "Is creed royal oud long lasting?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"is creed royal oud\""
+   },
+   {
+    "question": "How much is creed royal oud?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"what creed royal oud\""
+   },
+   {
+    "question": "Is creed royal oud worth it?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is creed royal oud\""
+   },
+   {
+    "question": "Is creed royal oud discontinued?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"is creed royal oud\""
+   },
+   {
+    "question": "Does creed royal oud use real oud?",
+    "pattern": "authentic",
+    "source": "Google Autocomplete (US), seed \"does creed royal oud\""
+   }
+  ],
+  "parfums-de-marly-greenley": [
+   {
+    "question": "Is pdm greenley unisex?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is pdm greenley\""
+   },
+   {
+    "question": "Is pdm greenley a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is pdm greenley\""
+   },
+   {
+    "question": "Does pdm greenley last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does pdm greenley\""
+   },
+   {
+    "question": "How much is pdm greenley?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how pdm greenley\""
+   },
+   {
+    "question": "Is pdm greenley worth it?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is pdm greenley\""
+   },
+   {
+    "question": "How does pdm work?",
+    "pattern": "occasion",
+    "source": "Google Autocomplete (US), seed \"how pdm greenley\""
+   },
+   {
+    "question": "When did pdm greenley come out?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"when pdm greenley\""
+   },
+   {
+    "question": "How to tell if pdm greenley is fake?",
+    "pattern": "authentic",
+    "source": "Google Autocomplete (US), seed \"how pdm greenley\""
+   }
+  ],
+  "afnan-9-pm": [
+   {
+    "question": "Does afnan 9pm smell good?",
+    "pattern": "smell",
+    "source": "Google Autocomplete (US), seed \"does afnan 9pm\""
+   },
+   {
+    "question": "Which afnan 9pm is best for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"what afnan 9pm\""
+   },
+   {
+    "question": "Is afnan 9pm a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is afnan 9pm\""
+   },
+   {
+    "question": "Does afnan 9pm last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does afnan 9pm\""
+   },
+   {
+    "question": "Is afnan 9pm good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is afnan 9pm\""
+   },
+   {
+    "question": "Is afnan 9pm good for school?",
+    "pattern": "occasion",
+    "source": "Google Autocomplete (US), seed \"is afnan 9pm\""
+   },
+   {
+    "question": "When did afnan 9pm come out?",
+    "pattern": "release",
+    "source": "Google Autocomplete (US), seed \"when afnan 9pm\""
+   }
+  ],
+  "lattafa-qaed-al-fursan": [
+   {
+    "question": "How does qaed al fursan smell?",
+    "pattern": "smell",
+    "source": "Google Autocomplete (US), seed \"how qaed al fursan\""
+   },
+   {
+    "question": "Is qaed al fursan for men?",
+    "pattern": "gender",
+    "source": "Google Autocomplete (US), seed \"is qaed al fursan\""
+   },
+   {
+    "question": "Is qaed al fursan a summer fragrance?",
+    "pattern": "season",
+    "source": "Google Autocomplete (US), seed \"is qaed al fursan\""
+   },
+   {
+    "question": "Does qaed al fursan last long?",
+    "pattern": "longevity",
+    "source": "Google Autocomplete (US), seed \"does qaed al fursan\""
+   },
+   {
+    "question": "How much qaed al fursan?",
+    "pattern": "price",
+    "source": "Google Autocomplete (US), seed \"how qaed al fursan\""
+   },
+   {
+    "question": "Is qaed al fursan good?",
+    "pattern": "worth",
+    "source": "Google Autocomplete (US), seed \"is qaed al fursan\""
+   }
+  ]
+ }
+}

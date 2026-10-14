@@ -7,7 +7,7 @@ from urllib.parse import urlencode
 SITE_NAME = "ScentRanked"
 SITE_URL = "https://scentranked.netlify.app"
 AFFILIATE_PARAMS = {}   # e.g. {"ref": "YOUR_ID"} - appended to every yoovic.com buy link
-CONTACT_EMAIL = "hello@scentranked.example"
+CONTACT_EMAIL = '<a href="/contact/">our contact form</a>'
 # ==========================
 
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -150,13 +150,32 @@ ROUNDUPS = [
    intro="Every pick here is under $100 at Yoovic at the time we checked (prices change, so confirm on the product page). Sorted roughly by how much fragrance you get for the money."),
 ]
 SOCIAL = {n: (SETTINGS.get("social", {}).get(n.lower()) or "#") for n in ["Instagram", "TikTok", "Pinterest", "X"]}   # edit in /admin > Settings
-ANNOUNCE = SETTINGS.get("announcement") or "Free shipping on every order at Yoovic · Expedited US shipping available"
+ANNOUNCE = SETTINGS.get("announcement") or "Shipping & returns are handled by Yoovic: check each product page for current terms"
 YEAR = datetime.date.today().year
 PUB_SLUGS = set(); QUESTIONS = []
 BLOG_CATS = ["Cologne Guides", "Buying Tips", "Seasonal Picks"]
 POSTS = []
 
-def price(i): return P[i]["price"]
+STALE_HOURS = 48
+NC = '<span class="nc">Not confirmed by the retailer</span>'
+REFUND_URL = "https://yoovic.com/refund-policy"
+DISCLOSE = '<p class="disc-near">Affiliate disclosure: we may earn a commission if you buy through Purchase Now links, at no extra cost to you. <a href="/affiliate-disclosure/">Details</a></p>'
+def _checked(i):
+    lc = P[i].get("last_checked")
+    try: return datetime.datetime.fromisoformat(lc) if lc else None
+    except ValueError: return None
+def is_stale(i):
+    c = _checked(i)
+    return c is None or (datetime.datetime.now(datetime.timezone.utc) - c).total_seconds() > STALE_HOURS * 3600
+def checked_label(i):
+    c = _checked(i)
+    return "checked " + c.strftime("%b %-d, %Y") if c else "not checked"
+def yid(i): return P[i]["url"].rstrip("/").split("/")[-1]
+def price(i): return "Check current price" if is_stale(i) else P[i]["price"]
+def price_html(i):
+    if is_stale(i): return '<span class="price">Check current price</span>'
+    c = P[i].get("compare_at_price")
+    return f'<span class="price">{P[i]["price"]}</span>' + (f' <s>{c}</s>' if c else "")
 def pnum(i): return float(re.sub(r"[^\d.]","",P[i]["price"]))
 def slugify(s): return re.sub(r"[^a-z0-9]+","-",s.lower()).strip("-")
 CSS = open(os.path.join(BASE,"style.css")).read()
@@ -180,7 +199,7 @@ def size(i):
     return m.group(0).replace("fl oz","fl oz")
 def badges(i):
     b=[]
-    if P[i].get("compare_at_price"): b.append(("sale","Sale"))
+    if P[i].get("compare_at_price") and not is_stale(i): b.append(("sale","Sale"))
     if i in TOP[:6]: b.append(("ed","Editor's Pick"))
     if F[i]["family"].endswith("(niche)"): b.append(("niche","Niche Luxury"))
     elif pnum(i)<100: b.append(("value","Under $100"))
@@ -196,15 +215,62 @@ SOC_ICONS={"Instagram":'<path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 
 def buy(i, label=None, cls="btn"):
     return f'<a class="{cls}" href="{esc(buy_url(P[i]["url"]))}" rel="sponsored nofollow noopener" target="_blank">Purchase Now</a>'
 
+# Widely reported launch years (only where well documented); others answer "Not confirmed by the retailer".
+LAUNCH = {14: 2010, 47: 2012, 48: 2018, 0: 2008, 26: 1995, 32: 2020, 2: 2020, 8: 2008, 9: 1999, 13: 2012, 19: 1995, 18: 2011, 39: 2020}
+def _sentences(t, n=2):
+    s = re.split(r"(?<=[.!?])\s+", re.sub(r"[🌟🌊🌿🍃🍍]", "", t or "").strip())
+    return " ".join(s[:n])
+def answer(i, pat):
+    f, p = F[i], P[i]; short = f["short"]; conc = concentration(i); sz = size(i); st = is_stale(i)
+    desc = p.get("description") or ""
+    if pat == "smell":
+        if f["notes"]: return f"Widely published notes for {short} include {f['notes'].lower()}. We'd describe the style as {f['family'].lower()}."
+        return f"The Yoovic listing describes it this way: “{esc(_sentences(desc))}” A full official note list is Not confirmed by the retailer."
+    if pat == "gender":
+        return f"The Yoovic listing presents {short} as a {'men' if p['gender']=='men' else 'unisex'} fragrance. Anyone who likes the scent can wear it."
+    if pat == "season":
+        return f"In our view it works best in {f['season'].lower()}. That's an editorial opinion based on the scent style ({f['family'].lower()}), not a retailer claim."
+    if pat == "longevity":
+        base = f"Not confirmed by the retailer: Yoovic's listing doesn't state a tested wear time, and longevity varies with skin, climate and how much you spray."
+        return base + (f" For context, this listing is an {conc}." if conc and conc[0] in "AEIOU" else f" For context, this listing is a {conc}." if conc else "")
+    if pat == "concentration":
+        return f"This Yoovic listing is the {conc}." if conc else "Not confirmed by the retailer: the listing title doesn't state the concentration."
+    if pat == "price":
+        return (f"{p['price']} on Yoovic ({checked_label(i)})" + (f", shown against a compare-at price of {p['compare_at_price']}." if p.get('compare_at_price') else ".") + " Prices change, so confirm on the product page.") if not st else "We couldn't verify the price in the last 48 hours. Check the current price on Yoovic's product page."
+    if pat == "worth":
+        return f"It depends on what you want. It's a strong pick if you want {f['best'][0].lower()+f['best'][1:]}. Keep in mind: {f['cons'][0][0].lower()+f['cons'][0][1:]}. This is our opinion, not a customer rating."
+    if pat == "occasion":
+        return f"We'd reach for it for {f['occasion'].lower()}. Go lighter (1–2 sprays) in close quarters like offices or classrooms."
+    if pat == "release":
+        y = LAUNCH.get(i)
+        return f"It's widely reported to have launched in {y}." if y else "Not confirmed by the retailer: the Yoovic listing doesn't give a launch date."
+    if pat == "refill":
+        return "Yes. The Yoovic listing title describes it as a refillable spray." if "refillable" in p["name"].lower() else "Not confirmed by the retailer: the Yoovic listing doesn't mention a refill option."
+    if pat == "authentic":
+        return "Not confirmed by the retailer: we didn't find a written authenticity guarantee for this listing. Check the box and bottle batch codes match, and review the seller's return terms before ordering."
+    if pat == "size":
+        return f"The Yoovic listing is for {sz}." if sz else "Not confirmed by the retailer: the listing title doesn't state the bottle size."
+    if pat == "care":
+        return "Store it in a cool, dark, dry place with the cap on, away from bathroom humidity and hot cars."
+    if pat == "shipping":
+        return f"See the Yoovic product page for current shipping and return terms, and Yoovic's <a href=\"{REFUND_URL}\" rel=\"nofollow noopener\" target=\"_blank\">refund policy</a>."
+    return ""
+def contrast(i, j):
+    a, b = F[i], F[j]
+    pa, pb = pnum(i), pnum(j)
+    cheaper = a["short"] if pa < pb else b["short"]
+    return (f"Choose {a['short']} if you want {a['best'][0].lower()+a['best'][1:]}; choose {b['short']} if you want {b['best'][0].lower()+b['best'][1:]}. "
+            f"{cheaper} is the lower-priced option at Yoovic right now." if pa != pb else "")
+
 def card(i, rank=None, eager=False):
     f=F[i]; p=P[i]
     bd="".join(f'<span class="badge {c}">{t}</span>' for c,t in badges(i))
-    cmp=f' <s>{p["compare_at_price"]}</s>' if p.get("compare_at_price") else ""
+    cmp=""
     data=f'data-brand="{esc(f["brand"])}" data-price="{pnum(i):.2f}" data-occ="{esc("|".join(occasions(i)))}" data-name="{esc((f["short"]+" "+f["brand"]+" "+f["family"]).lower())}"'
     return f"""<article class="pcard" {data}>{f'<span class="rank">#{rank}</span>' if rank else ''}<div class="badges">{bd}</div>
 <a href="/reviews/{f['slug']}/" class="pimg"><img src="{p['image']}" alt="{esc(f['short'])} by {esc(f['brand'])}" width="400" height="400" {'fetchpriority="high"' if eager else 'loading="lazy"'} decoding="async"></a>
 <div class="pbody"><a class="pbrand" href="/brands/{slugify(f['brand'])}/">{esc(f['brand'])}</a><h3><a href="/reviews/{f['slug']}/">{esc(f['short'])}</a></h3>
-<p class="pfam">{esc(f['family'])}</p><p class="pprice"><span class="price">{price(i)}</span>{cmp}</p>{buy(i)}</div></article>"""
+<p class="pfam">{esc(f['family'])}</p><p class="pprice">{price_html(i)}</p><p class="pchk">{'Price '+checked_label(i) if not is_stale(i) else 'Price not recently verified'}</p>{buy(i)}</div></article>"""
 
 def crumbs(items):
     return {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":k+1,"name":n,"item":SITE_URL+u} for k,(n,u) in enumerate(items)]}
@@ -267,22 +333,25 @@ def merchant_feed():
     for i in F:
         p = P[i]
         if not p.get("in_merchant_feed", True): continue
+        if is_stale(i) or (p.get("sync") or {}).get("status") != "ok": continue
         f = F[i]
+        ship = "<g:shipping><g:country>US</g:country><g:price>0.00 USD</g:price></g:shipping>" if (p.get("retailer") or {}).get("free_shipping_shown") else ""
+        av = "out_of_stock" if p.get("availability") == "out_of_stock" else "in_stock"
         sale = p.get("compare_at_price")
         pr = f"{pnum(i):.2f} USD"
         price_xml = f"<g:price>{float(re.sub(r'[^0-9.]','',sale)):.2f} USD</g:price><g:sale_price>{pr}</g:sale_price>" if sale else f"<g:price>{pr}</g:price>"
         extra = "".join(f"<g:additional_image_link>{esc(g)}</g:additional_image_link>" for g in (p.get("gallery") or [])[1:10])
         items.append(f"""<item><g:id>yoovic-{esc(p['url'].rstrip('/').split('/')[-1])}</g:id><title>{esc(p['name'][:150])}</title><description>{esc((p.get('description') or f['take'])[:4900])}</description>
-<link>{esc(buy_url(p['url']))}</link><g:image_link>{esc(p['image'])}</g:image_link>{extra}{price_xml}<g:availability>in_stock</g:availability><g:condition>new</g:condition>
+<link>{esc(buy_url(p['url']))}</link><g:image_link>{esc(p['image'])}</g:image_link>{extra}{price_xml}<g:availability>{av}</g:availability><g:condition>new</g:condition>
 <g:brand>{esc(f['brand'])}</g:brand><g:identifier_exists>no</g:identifier_exists><g:google_product_category>{esc(str(SEOS.get('google_product_category') or '479'))}</g:google_product_category><g:product_type>Fragrance &gt; Men's Cologne</g:product_type>
-<g:gender>{'male' if p.get('gender')=='men' else 'unisex'}</g:gender><g:age_group>adult</g:age_group><g:shipping><g:country>US</g:country><g:price>0.00 USD</g:price></g:shipping></item>""")
+<g:gender>{'male' if p.get('gender')=='men' else 'unisex'}</g:gender><g:age_group>adult</g:age_group>{ship}</item>""")
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"><channel><title>{SITE_NAME} product feed</title><link>{SITE_URL}/</link><description>{SITE_NAME} men\'s cologne picks</description>\n' + "\n".join(items) + "\n</channel></rss>\n"
 
-def page(path, title, desc, body, schema=None, ogimg=None, js=False, full=False):
+def page(path, title, desc, body, schema=None, ogimg=None, js=False, full=False, noindex=False):
     url = SITE_URL + "/" + path.replace("index.html","")
     sch = "".join(f'<script type="application/ld+json">{json.dumps(s)}</script>' for s in (schema or []))
     doc = f"""<!doctype html><html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(title)}</title><meta name="description" content="{esc(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0d0c0a">
+<title>{esc(title)}</title><meta name="description" content="{esc(desc)}"><link rel="canonical" href="{url}"><meta name="theme-color" content="#0d0c0a">{'<meta name="robots" content="noindex,follow">' if noindex else ''}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/favicon.svg">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{SITE_NAME}"><meta property="og:locale" content="en_US"><meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}">{f'<meta property="og:image" content="{ogimg}">' if ogimg else ''}
@@ -290,7 +359,7 @@ def page(path, title, desc, body, schema=None, ogimg=None, js=False, full=False)
 {header()}<main id="main" class="{'' if full else 'wrap'}">{body}</main>{footer()}{'<script src="/shop.js" defer></script>' if js else ''}<script src="/site.js" defer></script></body></html>"""
     f = os.path.join(OUT, path); os.makedirs(os.path.dirname(f), exist_ok=True); open(f,"w").write(doc)
     import hashlib; URL_HASH[url] = hashlib.sha1(re.sub(r"\d{4}-\d{2}-\d{2}", "", doc).encode()).hexdigest()[:16]
-    return url
+    return None if noindex else url
 
 SHOP_JS = r"""(function(){var g=document.getElementById('pgrid');if(!g)return;var cards=[].slice.call(g.children),f=document.getElementById('filters'),q=new URLSearchParams(location.search);
 var s=f.querySelector('[name=q]');if(q.get('q'))s.value=q.get('q');if(q.get('occ')){var c=f.querySelector('[name=occ][value="'+q.get('occ')+'"]');if(c)c.checked=true}if(q.get('brand'))f.brand.value=q.get('brand');
@@ -315,34 +384,57 @@ def build():
     open(os.path.join(OUT,"logo.svg"),"w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48">'+LOGO_MARK.replace('<svg class="mark" viewBox="0 0 40 48" aria-hidden="true">','<g>').replace('</svg>','</g>')+'<text x="50" y="33" font-family="Georgia,serif" font-size="26" fill="#f4efe6">Scent<tspan fill="#d4a85a" font-style="italic">Ranked</tspan></text></svg>')
     urls=[]
     # ---- product detail pages
+    PQ = json.load(open(os.path.join(BASE, "data", "product_questions.json")))["products"]
     for i,f in F.items():
-        p=P[i]; d=p["description"] or ""; gal=p.get("gallery") or [p["image"]]
+        p=P[i]; d=p.get("description") or ""; gal=p.get("gallery") or [p["image"]]; st=is_stale(i); rt=p.get("retailer",{})
+        pid=yid(i); conc=concentration(i); sz=size(i); chk=checked_label(i)
         rel=list(dict.fromkeys([j for r in ROUNDUPS if i in r["ids"] for j in r["ids"] if j!=i]+[j for j in F if F[j]["brand"]==f["brand"] and j!=i]))[:4]
+        alt=next((j for j in rel if F[j]["family"].split()[0]==f["family"].split()[0]), rel[0] if rel else None)
         inr="".join(f'<a class="chip" href="/{r["slug"]}/">{esc(r["title"])}</a>' for r in ROUNDUPS if i in r["ids"])
-        det=[("Brand",f'<a href="/brands/{slugify(f["brand"])}/">{esc(f["brand"])}</a>'),("Concentration",concentration(i)),("Size",size(i)),("Scent family",esc(f["family"])),("Best season",esc(f["season"])),("Best for",esc(f["occasion"])),("For","Men" if p["gender"]=="men" else "Unisex")]
-        dt="".join(f"<tr><th>{k}</th><td>{v}</td></tr>" for k,v in det if v)
+        avail = ("Out of stock on Yoovic" if p.get("availability")=="out_of_stock" else "Buy Now / Add to Cart shown on Yoovic" if p.get("availability")=="add_to_cart_shown" else None)
+        specs=[("Brand",f'<a href="/brands/{slugify(f["brand"])}/">{esc(f["brand"])}</a>'),("Concentration",esc(conc) if conc else NC),("Size",esc(sz) if sz else NC),
+               ("For","Men" if p["gender"]=="men" else "Unisex"),("Scent family (our description)",esc(f["family"])),("Yoovic product ID",esc(pid)),
+               ("Price",(esc(price(i))+f' <span class="small">({chk})</span>') if not st else 'Check current price on Yoovic'),("Availability",(esc(avail)+f' <span class="small">({chk})</span>') if avail and not st else NC)]
+        dt="".join(f"<tr><th>{k}</th><td>{v}</td></tr>" for k,v in specs)
         thumbs="".join(f'<button type="button" data-src="{g}" aria-label="View image {k+1}" aria-pressed="{str(k==0).lower()}"><img src="{g}" alt="" width="72" height="72" loading="lazy"></button>' for k,g in enumerate(gal)) if len(gal)>1 else ""
-        notes=f'<div class="notes"><h3>Key notes</h3><p>{"".join(f"<span>{esc(n.strip())}</span>" for n in f["notes"].split(","))}</p><p class="small">Widely published notes for this fragrance.</p></div>' if f["notes"] else ""
+        notes=f'<p><strong>Widely published notes:</strong> {esc(f["notes"])}.</p>' if f["notes"] else '<p>Note list: Not confirmed by the retailer. The listing describes the scent in general terms only (quoted below).</p>'
+        qa="".join(f'<details class="faq"><summary>{esc(q["question"])}</summary><div><p>{answer(i,q["pattern"])}</p></div></details>' for q in PQ.get(f["slug"],[]))
         bd="".join(f'<span class="badge {c}">{t}</span>' for c,t in badges(i))
+        cmp_html=""
+        if alt is not None:
+            rows=[("Brand",F[i]["brand"],F[alt]["brand"]),("Style",F[i]["family"],F[alt]["family"]),("Best season (our view)",F[i]["season"],F[alt]["season"]),("Best for (our view)",F[i]["occasion"],F[alt]["occasion"]),
+                  ("Concentration",concentration(i) or "Not confirmed",concentration(alt) or "Not confirmed"),("Size",size(i) or "Not confirmed",size(alt) or "Not confirmed"),("Price at Yoovic",price(i),price(alt))]
+            cmp_html=f'''<h2>{esc(f["short"])} vs {esc(F[alt]["short"])}</h2><div class="tw"><table class="cmp"><tr><th></th><th>{esc(f["short"])}</th><th><a href="/reviews/{F[alt]["slug"]}/">{esc(F[alt]["short"])}</a></th></tr>{"".join(f"<tr><th>{a}</th><td>{esc(b)}</td><td>{esc(c)}</td></tr>" for a,b,c in rows)}</table></div>
+<p>{esc(contrast(i,alt))}</p>'''
+        ship_lines=[]
+        if rt.get("free_shipping_shown") and not st: ship_lines.append(f'The Yoovic product page showed a "100% Free Shipping" badge ({chk}).')
+        if rt.get("expedited_shown") and not st: ship_lines.append(f'It also showed "Expedited shipping available" ({chk}). Delivery times and costs for your address: Not confirmed by the retailer on the page we checked.')
+        ship_lines.append(f'Returns: Yoovic\'s published <a href="{REFUND_URL}" rel="nofollow noopener" target="_blank">refund policy</a> describes a 7-day return window for items that arrive damaged, incorrect or not as described when the seller fulfils the order, and returns processed at Yoovic\'s fulfillment centers for "Fulfilled by Yoovic" orders. Which applies to this listing: Not confirmed by the retailer.')
+        ship_lines.append(f'Always check the <a href="{esc(buy_url(p["url"]))}" rel="sponsored nofollow noopener" target="_blank">Yoovic product page</a> for current shipping and return terms before you order. {SITE_NAME} does not sell or ship products.')
         body=f"""{crumb_html([("Home","/"),("Shop","/shop/"),(f['brand'],f"/brands/{slugify(f['brand'])}/"),(f['short'],None)])}
 <section class="pdp"><div class="gallery"><div class="gmain"><img id="gmain" src="{gal[0]}" alt="{esc(f['short'])} by {esc(f['brand'])}" width="600" height="600" fetchpriority="high"></div><div class="thumbs">{thumbs}</div></div>
-<div class="pinfo"><div class="badges static">{bd}</div><a class="pbrand" href="/brands/{slugify(f['brand'])}/">{esc(f['brand'])}</a><h1>{esc(f['short'])}</h1><p class="pfam">{esc(f['family'])}</p>
-<p class="pprice big"><span class="price">{price(i)}</span>{f' <s>{p["compare_at_price"]}</s>' if p.get("compare_at_price") else ''}</p>
+<div class="pinfo"><div class="badges static">{bd}</div><a class="pbrand" href="/brands/{slugify(f['brand'])}/">{esc(f['brand'])}</a><h1>{esc(f['short'])}: Price, Notes &amp; Where to Buy</h1><p class="pfam">{esc(f['family'])}{f" · {esc(sz)}" if sz else ""}</p>
+<p class="pprice big">{price_html(i)}</p><p class="small">{'Price checked '+chk[8:] if not st else 'Price not verified in the last 48 hours'} on Yoovic · Yoovic ID {esc(pid)}</p>
 <p class="lead">{esc(f['best'])}.</p>{buy(i,cls="btn lg")}
-<ul class="perks"><li>Ships from Yoovic: free shipping, expedited US options</li><li>Price checked {TODAY}. Confirm on Yoovic</li></ul>
+{DISCLOSE}
 <table class="dtable">{dt}</table><div class="chips">{inr}</div></div></section>
-<section class="pdesc"><div class="prose"><h2>Our take</h2><p>{esc(f['take'])}</p>
-<div class="pc"><div><h3>What we like</h3><ul>{''.join(f'<li>{esc(x)}</li>' for x in f['pros'])}</ul></div><div><h3>Keep in mind</h3><ul>{''.join(f'<li>{esc(x)}</li>' for x in f['cons'])}</ul></div></div>
-{notes}<h2>From the retailer's description</h2><p class="small">{esc(d[:600])}{'…' if len(d)>600 else ''}</p><p class="small">Listing: {esc(p['name'])}</p>
-<h2>How to wear it</h2><p>Best for <strong>{esc(f['occasion'].lower())}</strong>, ideally in <strong>{esc(f['season'].lower())}</strong>. Start with 2–3 sprays on the chest and neck and adjust. Performance varies with skin and climate, so sample first if you can. See our guide on <a href="/blog/edt-vs-edp-vs-parfum/">EDT vs EDP vs Parfum</a>.</p>
-<div class="cta">{buy(i,cls="btn lg")}</div></div></section>
-{f'<section class="sec"><h2 class="h2">You may also like</h2><div class="pgrid">{"".join(card(j) for j in rel)}</div></section>' if rel else ''}
+<section class="pdesc"><div class="prose">
+<h2>Overview</h2><p>{esc(f['take'])}</p>
+<h2>Key features</h2><ul>{''.join(f'<li>{esc(x)}</li>' for x in f['pros'])}</ul>
+<h2>Limitations</h2><ul>{''.join(f'<li>{esc(x)}</li>' for x in f['cons'])}<li>Longevity and projection: Not confirmed by the retailer. They vary with skin, climate and amount sprayed.</li></ul>
+<h2>Scent profile</h2>{notes}<blockquote class="small"><strong>Retailer description (Yoovic listing):</strong> {esc(d[:500])}{'…' if len(d)>500 else ''}</blockquote>
+<h2>Questions people search about {esc(f['short'])}</h2><p class="small">Based on common US search queries (Google autocomplete), answered from the retailer listing and widely published information. These are not customer questions or reviews.</p><div class="faqs one">{qa}</div>
+{cmp_html}
+<h2>Care &amp; storage</h2><p>Keep the bottle in a cool, dark place, such as a drawer or closet, away from bathroom humidity, sunlight and hot cars, and keep the cap on. Fresh citrus top notes are usually the first to fade if a fragrance is stored badly. More in <a href="/blog/does-cologne-expire/">Does Cologne Expire?</a></p>
+<h2>Shipping &amp; returns</h2>{''.join(f'<p>{x}</p>' for x in ship_lines)}
+<div class="cta">{buy(i,cls="btn lg")}{DISCLOSE}</div></div></section>
+{f'<section class="sec"><h2 class="h2">Related colognes</h2><div class="pgrid">{"".join(card(j) for j in rel)}</div></section>' if rel else ''}
 <div class="mbuy"><span class="price">{price(i)}</span>{buy(i)}</div>"""
-        offer={"@type":"Offer","price":f"{pnum(i):.2f}","priceCurrency":"USD","url":p["url"],"seller":{"@type":"Organization","name":"Yoovic"}}
-        sch=[{"@context":"https://schema.org","@type":"Product","name":p["name"],"brand":{"@type":"Brand","name":f["brand"]},"image":gal,"description":f["take"],"category":"Men's Cologne","offers":offer},
-             crumbs([("Home","/"),("Shop","/shop/"),(f["brand"],f"/brands/{slugify(f['brand'])}/"),(f["short"],f"/reviews/{f['slug']}/")])]
-        urls.append(page(f"reviews/{f['slug']}/index.html", f"{f['short']}: Notes, Price & Review ({YEAR}) | {SITE_NAME}",
-             f"{f['short']} by {f['brand']}: {f['best'].lower()}. Scent notes, best season and occasion, and current price ({price(i)}) with free shipping at Yoovic.", body, sch, p["image"]))
+        prod={"@context":"https://schema.org","@type":"Product","name":p.get("retailer_title") or p["name"],"brand":{"@type":"Brand","name":f["brand"]},"image":gal,"description":f["take"],"sku":pid,"category":"Men's Cologne"}
+        if not st: prod["offers"]={"@type":"Offer","price":f"{pnum(i):.2f}","priceCurrency":"USD","url":p["url"],"seller":{"@type":"Organization","name":"Yoovic"}}
+        sch=[prod,crumbs([("Home","/"),("Shop","/shop/"),(f["brand"],f"/brands/{slugify(f['brand'])}/"),(f["short"],f"/reviews/{f['slug']}/")])]
+        urls.append(page(f"reviews/{f['slug']}/index.html", f"{f['short']}: Price, Notes & Where to Buy ({YEAR}) | {SITE_NAME}",
+             f"{f['short']} by {f['brand']}: {f['best'].lower()}. {('Price '+price(i)+' at Yoovic, checked '+chk[8:]+'. ') if not st else ''}Specs, scent profile, common questions and shipping info.", body, sch, p["image"]))
     # ---- roundups
     for r in ROUNDUPS:
         items="".join(f"""<section class="pick" id="{F[i]['slug']}"><div class="pickimg"><span class="rank">#{k+1}</span><img src="{P[i]['image']}" alt="{esc(F[i]['short'])}" width="320" height="320" loading="lazy"></div>
@@ -369,7 +461,7 @@ def build():
 <fieldset><legend>Occasion</legend>{chips}</fieldset><label>Sort<select name="sort"><option value="">Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></label><button type="reset" class="btn ghost">Reset filters</button></form>
 <div><p class="count" id="count" aria-live="polite"></p><div class="pgrid" id="pgrid">{allc}</div><p id="empty" hidden>No colognes match those filters.</p></div></div>"""
     urls.append(page("shop/index.html",f"Shop the Best Men's Colognes ({YEAR}) | {SITE_NAME}","Shop our curated designer and niche men's colognes, from Chanel and Versace to Creed. Filter by brand, price and occasion.",body,[crumbs([("Home","/"),("Shop","/shop/")])],js=True))
-    urls.append(page("reviews/index.html",f"All Men's Cologne Reviews | {SITE_NAME}","Every men's cologne we cover, with notes, best uses and prices.",crumb_html([("Home","/"),("Reviews",None)])+'<h1>All Cologne Reviews</h1><div class="pgrid">'+"".join(card(i) for i in sorted(F,key=pnum))+'</div>'))
+    urls.append(page("reviews/index.html",f"All Men's Cologne Reviews | {SITE_NAME}","Every men's cologne we cover, with notes, best uses and prices.",crumb_html([("Home","/"),("Reviews",None)])+'<h1>All Cologne Reviews</h1><div class="pgrid">'+"".join(card(i) for i in sorted(F,key=pnum))+'</div>',noindex=True))
     # ---- brands
     bl=""
     for b in BRANDS:
@@ -377,7 +469,7 @@ def build():
         lo,hi=min(pnum(i) for i in ids),max(pnum(i) for i in ids)
         body=f"""{crumb_html([("Home","/"),("Brands","/brands/"),(b,None)])}<h1>{esc(b)} Colognes for Men</h1><p class="lede">Our recommended {esc(b)} fragrances, from ${lo:.0f}{f" to ${hi:.0f}" if hi>lo else ""}, with notes and current prices.</p><div class="pgrid">{"".join(card(i) for i in ids)}</div>
 <p class="more"><a href="/brands/">All brands</a> · <a href="/shop/">Shop all colognes</a></p>"""
-        urls.append(page(f"brands/{s}/index.html",f"Best {b} Colognes for Men ({YEAR}) | {SITE_NAME}",f"The best {b} colognes for men, with scent notes, best uses and current prices at Yoovic.",body,[crumbs([("Home","/"),("Brands","/brands/"),(b,f"/brands/{s}/")])],P[ids[0]]["image"]))
+        urls.append(page(f"brands/{s}/index.html",f"Best {b} Colognes for Men ({YEAR}) | {SITE_NAME}",f"The best {b} colognes for men, with scent notes, best uses and current prices at Yoovic.",body,[crumbs([("Home","/"),("Brands","/brands/"),(b,f"/brands/{s}/")])],P[ids[0]]["image"],noindex=len(ids)<2))
     urls.append(page("brands/index.html",f"Cologne Brands | {SITE_NAME}","Browse men's colognes by brand: Chanel, Versace, Jean Paul Gaultier, Armani, Creed, Paco Rabanne and more.",crumb_html([("Home","/"),("Brands",None)])+f'<h1>Shop by Brand</h1><div class="bgrid">{bl}</div>'))
     # ---- home
     promos=[("best-compliment-getting-colognes","Top Colognes of "+str(YEAR),"The compliment-getters",47),("best-colognes-under-100","Under $100 Picks","Designer scents, sensible prices",48),("best-date-night-colognes","Date Night","Warm, close, unforgettable",32),("best-summer-colognes","Summer Fresh","Scents that survive the heat",2)]
@@ -396,7 +488,7 @@ def build():
 <p class="lede">Curated picks from Chanel, Versace, Jean Paul Gaultier, Armani, Creed and more, ranked by occasion in plain English. Every pick ships from Yoovic.</p>
 <div class="hbtn"><a class="btn lg" href="/shop/">Shop the Edit</a><a class="btn ghost lg" href="/best-compliment-getting-colognes/">Top Colognes of {YEAR}</a></div></div>
 <div class="hart"><img src="{P[14]['image']}" alt="Bleu de Chanel" width="420" height="420" fetchpriority="high" class="h1i"><img src="{P[32]['image']}" alt="Le Male Le Parfum" width="300" height="300" class="h2i"><img src="{P[47]['image']}" alt="Versace Eros" width="260" height="260" class="h3i" loading="lazy"></div></div></section>
-<div class="trust wrap"><span>Free shipping on every order at Yoovic</span><span>Expedited US shipping available</span><span>Independent, no-hype picks</span><span>No paid rankings</span></div>
+<div class="trust wrap"><span>Prices checked on Yoovic &amp; dated</span><span>Purchases &amp; returns handled by Yoovic</span><span>Independent, no-hype picks</span><span>No paid rankings</span></div>
 <section class="wrap sec"><h2 class="h2">Shop by occasion</h2><div class="promos">{pr}</div></section>
 <section class="wrap sec"><div class="shead"><h2 class="h2">Editor's top picks</h2><a href="/shop/">View all →</a></div><div class="pgrid">{''.join(card(i,k+1,eager=k<2) for k,i in enumerate(TOP))}</div></section>
 <section class="banner"><div class="wrap"><div><p class="kicker">Under $100</p><h2>Designer quality, without the designer markup.</h2><p>Versace Eros Flame, Le Male, 1 Million and more, all under $100.</p><a class="btn lg" href="/best-colognes-under-100/">Shop Under $100</a></div><img src="{P[48]['image']}" alt="Versace Eros Flame" width="320" height="320" loading="lazy"></div></section>
@@ -406,6 +498,10 @@ def build():
     sch=[{"@context":"https://schema.org","@type":"WebSite","name":SITE_NAME,"url":SITE_URL+"/","potentialAction":{"@type":"SearchAction","target":SITE_URL+"/shop/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@context":"https://schema.org","@type":"Organization","name":SITE_NAME,"url":SITE_URL+"/","logo":SITE_URL+"/logo.svg"},faq_schema]
     urls.insert(0,page("index.html",f"Best Designer Colognes for Men ({YEAR}): Top Picks | {SITE_NAME}","The best designer colognes for men in "+str(YEAR)+": compliment-getters, date night, summer and under-$100 picks from Chanel, Versace, JPG, Armani and Creed, with current prices.",body,sch,P[14]['image'],full=True))
     # ---- static pages
+    urls.append(page("contact/index.html",f"Contact | {SITE_NAME}","Contact the ScentRanked team about corrections, partnerships or privacy requests.",crumb_html([("Home","/"),("Contact",None)])+f'''<div class="prose"><h1>Contact {SITE_NAME}</h1><p>Questions, corrections or privacy requests? Send us a message and we'll reply by email. For orders, shipping or returns, contact Yoovic directly at <a href="mailto:support@yoovic.com">support@yoovic.com</a>. We don't sell or ship products.</p>
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thanks/" class="cform"><input type="hidden" name="form-name" value="contact"><p hidden><label>Leave empty <input name="bot-field"></label></p>
+<p><label>Name<br><input name="name" required maxlength="100"></label></p><p><label>Email<br><input type="email" name="email" required></label></p><p><label>Message<br><textarea name="message" rows="6" required maxlength="4000"></textarea></label></p><button class="btn" type="submit">Send message</button></form></div>'''))
+    page("contact/thanks/index.html",f"Thanks | {SITE_NAME}","Message received.",'<div class="prose"><h1>Thanks, your message was sent.</h1><p><a href="/">Back to home</a></p></div>',noindex=True)
     S={"about":("About ScentRanked",f"<h1>About {SITE_NAME}</h1><p>{SITE_NAME} is a small editorial site that helps US shoppers pick a men's cologne without the hype. Our guides are organized around real situations (office, summer, date night, budget), and we stick to fragrances with long, well-documented reputations.</p><h2>How we write</h2><ul><li>Scent notes come from brand or retailer information, or widely published fragrance pyramids.</li><li>Our take is editorial opinion. We don't publish star ratings, scores or invented customer reviews.</li><li>Prices are checked on the retailer's site and dated, and they can change at any time.</li></ul><h2>Contact</h2><p>{CONTACT_EMAIL}</p>"),
        "affiliate-disclosure":("Affiliate Disclosure",f"<h1>Affiliate Disclosure</h1><p>{SITE_NAME} is reader-supported. \"Purchase Now\" links on this site point to <a href='https://yoovic.com' rel='sponsored nofollow'>Yoovic</a>, and we may earn a commission if you buy through them, at no extra cost to you.</p><p>Commissions never change our editorial opinion or the order of our rankings. We are not affiliated with, endorsed by, or sponsored by any of the fragrance brands mentioned. All trademarks belong to their owners.</p><p>Yoovic handles purchases, shipping, returns and customer service. Please review its terms before buying.</p><p>This disclosure follows the U.S. Federal Trade Commission's guidance on endorsements.</p>"),
        "privacy":("Privacy Policy",f"<h1>Privacy Policy</h1><p class='small'>Last updated {TODAY}</p><p>{SITE_NAME} does not require accounts.</p><h2>Newsletter</h2><p>If you subscribe, we store your email address (via our host's form service) only to send the newsletter. Unsubscribe or request deletion at any time by contacting {CONTACT_EMAIL}.</p><h2>Technical data</h2><p>Our hosting provider may log standard technical data (IP address, browser, pages visited) for security and performance.</p><h2>Cookies & third parties</h2><p>We don't set advertising cookies. Fonts load from Google Fonts and product images from yoovic.com. When you click a Purchase Now link you go to Yoovic, which has its own privacy policy and may use cookies to attribute the referral.</p><h2>Your rights</h2><p>US residents, including California residents under the CCPA/CPRA, may request access to or deletion of personal data we hold. Contact {CONTACT_EMAIL}.</p><h2>Children</h2><p>This site is not directed at children under 13.</p>"),
@@ -422,6 +518,7 @@ def build():
     hub=f'{crumb_html([("Home","/"),("Questions",None)])}<h1>Men\'s Cologne Questions, Answered</h1><p class="lede">Real questions US shoppers ask about cologne, from search suggestions and fragrance communities, grouped by topic. {answered} answered so far, with more added every week.</p><div class="chips">{tl}</div>{qs_html}'
     urls.append(page("questions/index.html",f"Men's Cologne Questions & Answers | {SITE_NAME}","Answers to the most common questions about men's cologne: how to apply it, how long it lasts, winter scents, gifting and more.",hub,[crumbs([("Home","/"),("Questions","/questions/")])]))
     page("404.html",f"Page not found | {SITE_NAME}","Page not found",'<section class="prose static"><h1>Page not found</h1><p><a class="btn" href="/shop/">Shop colognes</a></p></section>')
+    urls[:] = [u for u in urls if u]
     open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n" for u in urls)+"</urlset>\n")
     ik = re.sub(r"[^a-zA-Z0-9-]", "", SEOS.get("indexnow_key", ""))
     if ik: open(os.path.join(OUT, f"{ik}.txt"), "w").write(ik)
@@ -525,11 +622,11 @@ def build_blog():
         img = p["img"]; cat = p.get("category")
         rel = [x for x in posts if x is not p and x.get("category")==cat][:3]
         body = f"""{crumb_html([("Home","/"),("Blog","/blog/")]+([(cat,f"/blog/category/{slugify(cat)}/")] if cat else [])+[(p['title'],None)])}
-<article class="prose post">{f'<a class="kicker" href="/blog/category/{slugify(cat)}/">{esc(cat)}</a>' if cat else ''}<h1>{esc(p['title'])}</h1>{f'<p class="qline"><span>Q</span>{esc(p["question"])}</p>' if p.get("question") else ''}<p class="small">{p['dt'].strftime('%B %-d, %Y')} · {SITE_NAME} Editors</p>
+<article class="prose post">{f'<a class="kicker" href="/blog/category/{slugify(cat)}/">{esc(cat)}</a>' if cat else ''}<h1>{esc(p['title'])}</h1>{f'<p class="qline"><span>Q</span>{esc(p["question"])}</p>' if p.get("question") else ''}<p class="small">{p['dt'].strftime('%B %-d, %Y')} · By {SITE_NAME}</p>
 {f'<img class="post-hero" src="{esc(img)}" alt="" width="760" height="380">' if img else ''}{md(p['body'])}</article>
 {f'<section class="sec"><h2 class="h2">More {esc(cat)}</h2><div class="posts four">{plist(rel)}</div></section>' if rel else ''}"""
         sch = [{"@context":"https://schema.org","@type":"BlogPosting","headline":p["title"],"description":p.get("description",""),"datePublished":p["dt"].isoformat(),"articleSection":cat,
-                "image":img or None,"author":{"@type":"Organization","name":SITE_NAME},"publisher":{"@type":"Organization","name":SITE_NAME,"logo":{"@type":"ImageObject","url":SITE_URL+"/logo.svg"}},"mainEntityOfPage":f"{SITE_URL}/blog/{p['slug']}/"},
+                "image":img or None,"author":{"@type":"Organization","name":SITE_NAME,"url":SITE_URL+"/about/"},"publisher":{"@type":"Organization","name":SITE_NAME,"logo":{"@type":"ImageObject","url":SITE_URL+"/logo.svg"}},"mainEntityOfPage":f"{SITE_URL}/blog/{p['slug']}/"},
                crumbs([("Home","/"),("Blog","/blog/"),(p["title"],f"/blog/{p['slug']}/")])]
         sa = re.search(r"\*\*Short answer:\*\*\s*(.+)", p["body"])
         if p.get("question") and sa:
