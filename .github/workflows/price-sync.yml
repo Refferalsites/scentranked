@@ -18,7 +18,7 @@ jobs:
         run: |
           git config user.name "scentranked-bot"
           git config user.email "341540938+Refferalsites@users.noreply.github.com"
-          git add data/products.json data/sync_report.json data/price_history.json
+          git add data/products.json data/sync_report.json $(ls data/price_history.json 2>/dev/null)
           if git diff --cached --quiet; then
             echo "No product data changes"
           else
