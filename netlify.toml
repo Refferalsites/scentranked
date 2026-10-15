@@ -21,3 +21,19 @@
     X-Robots-Tag = "noindex, nofollow"
     X-Frame-Options = "DENY"
     Cache-Control = "no-store"
+
+[images]
+  remote_images = ["https://(www\\.)?yoovic\\.com/.*"]
+
+# Clean-URL 301s: strip index.html
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*/index.html"
+  to = "/:splat/"
+  status = 301
+  force = true

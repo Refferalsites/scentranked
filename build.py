@@ -25,6 +25,12 @@ if SETTINGS.get("affiliate_params"):
     AFFILIATE_PARAMS = dict(parse_qsl(SETTINGS["affiliate_params"].lstrip("?")))
 esc = html.escape
 
+from urllib.parse import quote as _q
+def cdn(u, w=400):
+    u=str(u)
+    if u.startswith("http"): return f"/.netlify/images?url={_q(u, safe='')}&w={w}&fm=webp&q=80"
+    return u
+
 def buy_url(u):
     if not AFFILIATE_PARAMS: return u
     return u + ("&" if "?" in u else "?") + urlencode(AFFILIATE_PARAMS)
@@ -268,7 +274,7 @@ def card(i, rank=None, eager=False):
     cmp=""
     data=f'data-brand="{esc(f["brand"])}" data-price="{pnum(i):.2f}" data-occ="{esc("|".join(occasions(i)))}" data-name="{esc((f["short"]+" "+f["brand"]+" "+f["family"]).lower())}"'
     return f"""<article class="pcard" {data}>{f'<span class="rank">#{rank}</span>' if rank else ''}<div class="badges">{bd}</div>
-<a href="/reviews/{f['slug']}/" class="pimg"><img src="{p['image']}" alt="{esc(f['short'])} by {esc(f['brand'])}" width="400" height="400" {'fetchpriority="high"' if eager else 'loading="lazy"'} decoding="async"></a>
+<a href="/reviews/{f['slug']}/" class="pimg"><img src="{cdn(p['image'],400)}" alt="{esc(f['short'])} by {esc(f['brand'])}" width="400" height="400" {'fetchpriority="high"' if eager else 'loading="lazy"'} decoding="async"></a>
 <div class="pbody"><a class="pbrand" href="/brands/{slugify(f['brand'])}/">{esc(f['brand'])}</a><h3><a href="/reviews/{f['slug']}/">{esc(f['short'])}</a></h3>
 <p class="pfam">{esc(f['family'])}</p><p class="pprice">{price_html(i)}</p><p class="pchk">{'Price '+checked_label(i) if not is_stale(i) else 'Price not recently verified'}</p>{buy(i)}</div></article>"""
 
@@ -399,7 +405,7 @@ def build():
                ("For","Men" if p["gender"]=="men" else "Unisex"),("Scent family (our description)",esc(f["family"])),("Yoovic product ID",esc(pid)),
                ("Price",(esc(price(i))+f' <span class="small">({chk})</span>') if not st else 'Check current price on Yoovic'),("Availability",(esc(avail)+f' <span class="small">({chk})</span>') if avail and not st else NC)]
         dt="".join(f"<tr><th>{k}</th><td>{v}</td></tr>" for k,v in specs)
-        thumbs="".join(f'<button type="button" data-src="{g}" aria-label="View image {k+1}" aria-pressed="{str(k==0).lower()}"><img src="{g}" alt="" width="72" height="72" loading="lazy"></button>' for k,g in enumerate(gal)) if len(gal)>1 else ""
+        thumbs="".join(f'<button type="button" data-src="{cdn(g,600)}" aria-label="View image {k+1}" aria-pressed="{str(k==0).lower()}"><img src="{cdn(g,144)}" alt="{esc(f['short'])} image {k+1}" width="72" height="72" loading="lazy"></button>' for k,g in enumerate(gal)) if len(gal)>1 else ""
         notes=f'<p><strong>Widely published notes:</strong> {esc(f["notes"])}.</p>' if f["notes"] else '<p>Note list: Not confirmed by the retailer. The listing describes the scent in general terms only (quoted below).</p>'
         qa="".join(f'<details class="faq"><summary>{esc(q["question"])}</summary><div><p>{answer(i,q["pattern"])}</p></div></details>' for q in PQ.get(f["slug"],[]))
         bd="".join(f'<span class="badge {c}">{t}</span>' for c,t in badges(i))
@@ -415,7 +421,7 @@ def build():
         ship_lines.append(f'Returns: Yoovic\'s published <a href="{REFUND_URL}" rel="nofollow noopener" target="_blank">refund policy</a> describes a 7-day return window for items that arrive damaged, incorrect or not as described when the seller fulfils the order, and returns processed at Yoovic\'s fulfillment centers for "Fulfilled by Yoovic" orders. Which applies to this listing: Not confirmed by the retailer.')
         ship_lines.append(f'Always check the <a href="{esc(buy_url(p["url"]))}" rel="sponsored nofollow noopener" target="_blank">Yoovic product page</a> for current shipping and return terms before you order. {SITE_NAME} does not sell or ship products.')
         body=f"""{crumb_html([("Home","/"),("Shop","/shop/"),(f['brand'],f"/brands/{slugify(f['brand'])}/"),(f['short'],None)])}
-<section class="pdp"><div class="gallery"><div class="gmain"><img id="gmain" src="{gal[0]}" alt="{esc(f['short'])} by {esc(f['brand'])}" width="600" height="600" fetchpriority="high"></div><div class="thumbs">{thumbs}</div></div>
+<section class="pdp"><div class="gallery"><div class="gmain"><img id="gmain" src="{cdn(gal[0],600)}" alt="{esc(f['short'])} by {esc(f['brand'])}" width="600" height="600" fetchpriority="high"></div><div class="thumbs">{thumbs}</div></div>
 <div class="pinfo"><div class="badges static">{bd}</div><a class="pbrand" href="/brands/{slugify(f['brand'])}/">{esc(f['brand'])}</a><h1>{esc(f['short'])}: Price, Notes &amp; Where to Buy</h1><p class="pfam">{esc(f['family'])}{f" · {esc(sz)}" if sz else ""}</p>
 <p class="pprice big">{price_html(i)}</p><p class="small">{'Price checked '+chk[8:] if not st else 'Price not verified in the last 48 hours'} on Yoovic · Yoovic ID {esc(pid)}</p>
 <p class="lead">{esc(f['best'])}.</p>{buy(i,cls="btn lg")}
@@ -440,7 +446,7 @@ def build():
              f"{f['short']} by {f['brand']}: {f['best'].lower()}. {('Price '+price(i)+' at Yoovic, checked '+chk[8:]+'. ') if not st else ''}Specs, scent profile, common questions and shipping info.", body, sch, p["image"]))
     # ---- roundups
     for r in ROUNDUPS:
-        items="".join(f"""<section class="pick" id="{F[i]['slug']}"><div class="pickimg"><span class="rank">#{k+1}</span><img src="{P[i]['image']}" alt="{esc(F[i]['short'])}" width="320" height="320" loading="lazy"></div>
+        items="".join(f"""<section class="pick" id="{F[i]['slug']}"><div class="pickimg"><span class="rank">#{k+1}</span><img src="{cdn(P[i]['image'],320)}" alt="{esc(F[i]['short'])}" width="320" height="320" loading="lazy"></div>
 <div><a class="pbrand" href="/brands/{slugify(F[i]['brand'])}/">{esc(F[i]['brand'])}</a><h2>{esc(F[i]['short'])}</h2><p class="pfam">{esc(F[i]['family'])} · {esc(F[i]['season'])}</p><p class="lead">{esc(F[i]['best'])}</p><p>{esc(F[i]['take'])}</p>
 <div class="prow"><span class="price">{price(i)}</span>{buy(i)}<a class="link" href="/reviews/{F[i]['slug']}/">Full details →</a></div></div></section>""" for k,i in enumerate(r["ids"]))
         quick="".join(f'<li><a href="#{F[i]["slug"]}">{esc(F[i]["short"])}</a> <span class="qp">{price(i)}</span> {buy(i,cls="btn sm")}</li>' for i in r["ids"])
@@ -468,7 +474,7 @@ def build():
     # ---- brands
     bl=""
     for b in BRANDS:
-        ids=[i for i in F if F[i]["brand"]==b]; s=slugify(b); bl+=f'<a class="bcard" href="/brands/{s}/"><img src="{P[ids[0]]["image"]}" alt="" width="160" height="160" loading="lazy"><span>{esc(b)}</span><small>{len(ids)} pick{"s" if len(ids)>1 else ""}</small></a>'
+        ids=[i for i in F if F[i]["brand"]==b]; s=slugify(b); bl+=f'<a class="bcard" href="/brands/{s}/"><img src="{cdn(P[ids[0]]["image"],160)}" alt="{esc(b)} cologne" width="160" height="160" loading="lazy"><span>{esc(b)}</span><small>{len(ids)} pick{"s" if len(ids)>1 else ""}</small></a>'
         lo,hi=min(pnum(i) for i in ids),max(pnum(i) for i in ids)
         body=f"""{crumb_html([("Home","/"),("Brands","/brands/"),(b,None)])}<h1>{esc(b)} Colognes for Men</h1><p class="lede">Our recommended {esc(b)} fragrances, from ${lo:.0f}{f" to ${hi:.0f}" if hi>lo else ""}, with notes and current prices.</p><div class="pgrid">{"".join(card(i) for i in ids)}</div>
 <p class="more"><a href="/brands/">All brands</a> · <a href="/shop/">Shop all colognes</a></p>"""
@@ -476,9 +482,9 @@ def build():
     urls.append(page("brands/index.html",f"Cologne Brands | {SITE_NAME}","Browse men's colognes by brand: Chanel, Versace, Jean Paul Gaultier, Armani, Creed, Paco Rabanne and more.",crumb_html([("Home","/"),("Brands",None)])+f'<h1>Shop by Brand</h1><div class="bgrid">{bl}</div>'))
     # ---- home
     promos=[("best-compliment-getting-colognes","Top Colognes of "+str(YEAR),"The compliment-getters",47),("best-colognes-under-100","Under $100 Picks","Designer scents, sensible prices",48),("best-date-night-colognes","Date Night","Warm, close, unforgettable",32),("best-summer-colognes","Summer Fresh","Scents that survive the heat",2)]
-    pr="".join(f'<a class="promo" href="/{s}/"><img src="{P[i]["image"]}" alt="" width="300" height="300" loading="lazy"><div><small>{esc(sub)}</small><strong>{esc(t)}</strong><span>Shop the list →</span></div></a>' for s,t,sub,i in promos)
+    pr="".join(f'<a class="promo" href="/{s}/"><img src="{cdn(P[i]["image"],300)}" alt="{esc(t)}" width="300" height="300" loading="lazy"><div><small>{esc(sub)}</small><strong>{esc(t)}</strong><span>Shop the list →</span></div></a>' for s,t,sub,i in promos)
     brs="".join(f'<a href="/brands/{slugify(b)}/">{esc(b)}</a>' for b in BRANDS)
-    def pimg(x): return f'<img src="{esc(x["img"])}" alt="" width="400" height="250" loading="lazy">' if x.get("img") else ""
+    def pimg(x): return f'<img src="{esc(cdn(x["img"],400))}" alt="{esc(x.get("title",""))}" width="400" height="250" loading="lazy">' if x.get("img") else ""
     def pcards(lst): return "".join(f'<a class="post-card v" href="/blog/{x["slug"]}/">{pimg(x)}<div><p class="small">{esc(x.get("category",""))} · {x["dt"].strftime("%b %-d, %Y")}</p><h3>{esc(x["title"])}</h3><p>{esc(x.get("description",""))}</p></div></a>' for x in lst)
     secs=[("Latest Articles","/blog/",POSTS[:4])]+[(c,f"/blog/category/{slugify(c)}/",[x for x in POSTS if x.get("category")==c][:4]) for c in BLOG_CATS]
     blogsecs="".join(f'<section class="sec blogsec{" alt" if k%2 else ""}"><div class="shead"><h2 class="h2">{esc(t)}</h2><a href="{u}">View all →</a></div><div class="posts four">{pcards(l)}</div></section>' for k,(t,u,l) in enumerate(secs) if l)
@@ -490,11 +496,11 @@ def build():
     body=f"""<section class="hero"><div class="wrap hgrid"><div class="htxt"><p class="kicker">The {YEAR} Edit · Best Designer Colognes for Men</p><h1>Find the cologne that<br><em>gets you noticed.</em></h1>
 <p class="lede">Curated picks from Chanel, Versace, Jean Paul Gaultier, Armani, Creed and more, ranked by occasion in plain English. Every pick ships from Yoovic.</p>
 <div class="hbtn"><a class="btn lg" href="/shop/">Shop the Edit</a><a class="btn ghost lg" href="/best-compliment-getting-colognes/">Top Colognes of {YEAR}</a></div></div>
-<div class="hart"><img src="{P[14]['image']}" alt="Bleu de Chanel" width="420" height="420" fetchpriority="high" class="h1i"><img src="{P[32]['image']}" alt="Le Male Le Parfum" width="300" height="300" class="h2i"><img src="{P[47]['image']}" alt="Versace Eros" width="260" height="260" class="h3i" loading="lazy"></div></div></section>
+<div class="hart"><img src="{cdn(P[14]['image'],420)}" alt="Bleu de Chanel" width="420" height="420" fetchpriority="high" class="h1i"><img src="{cdn(P[32]['image'],300)}" alt="Le Male Le Parfum" width="300" height="300" class="h2i"><img src="{cdn(P[47]['image'],260)}" alt="Versace Eros" width="260" height="260" class="h3i" loading="lazy"></div></div></section>
 <div class="trust wrap"><span>Prices checked on Yoovic &amp; dated</span><span>Purchases &amp; returns handled by Yoovic</span><span>Independent, no-hype picks</span><span>No paid rankings</span></div>
 <section class="wrap sec"><h2 class="h2">Shop by occasion</h2><div class="promos">{pr}</div></section>
 <section class="wrap sec"><div class="shead"><h2 class="h2">Editor's top picks</h2><a href="/shop/">View all →</a></div><div class="pgrid">{''.join(card(i,k+1,eager=k<2) for k,i in enumerate(TOP))}</div></section>
-<section class="banner"><div class="wrap"><div><p class="kicker">Under $100</p><h2>Designer quality, without the designer markup.</h2><p>Versace Eros Flame, Le Male, 1 Million and more, all under $100.</p><a class="btn lg" href="/best-colognes-under-100/">Shop Under $100</a></div><img src="{P[48]['image']}" alt="Versace Eros Flame" width="320" height="320" loading="lazy"></div></section>
+<section class="banner"><div class="wrap"><div><p class="kicker">Under $100</p><h2>Designer quality, without the designer markup.</h2><p>Versace Eros Flame, Le Male, 1 Million and more, all under $100.</p><a class="btn lg" href="/best-colognes-under-100/">Shop Under $100</a></div><img src="{cdn(P[48]['image'],320)}" alt="Versace Eros Flame" width="320" height="320" loading="lazy"></div></section>
 <section class="wrap sec"><h2 class="h2">Shop by brand</h2><div class="brandrow">{brs}</div></section>
 {faq_html}{blogsecs}
 <section class="wrap sec prose"><h2 class="h2">How we pick</h2><p>We focus on fragrances with long, well-documented reputations in the US and sort them by what you'll actually use them for: office, summer, date night, or getting noticed. We don't publish star ratings, scores or invented reviews. You get our honest opinion, the published notes, and who each scent suits. "Purchase Now" links go to the product page at Yoovic, and we may earn a commission (<a href="/affiliate-disclosure/">details</a>).</p></section>"""
@@ -620,13 +626,13 @@ def load_posts():
 def build_blog():
     posts = POSTS; urls = []
     def cats_nav(cur=None): return '<div class="chips">'+f'<a class="chip{" on" if cur is None else ""}" href="/blog/">All</a>'+"".join(f'<a class="chip{" on" if cur==c else ""}" href="/blog/category/{slugify(c)}/">{esc(c)}</a>' for c in BLOG_CATS)+'</div>'
-    def plist(lst): return "".join(f"""<a class="post-card" href="/blog/{p['slug']}/">{f'<img src="{esc(p["img"])}" alt="" width="400" height="250" loading="lazy">' if p['img'] else ''}<div><p class="small">{esc(p.get('category',''))} · {p['dt'].strftime('%b %-d, %Y')}</p><h2>{esc(p['title'])}</h2><p>{esc(p.get('description',''))}</p></div></a>""" for p in lst) or "<p>No posts yet.</p>"
+    def plist(lst): return "".join(f"""<a class="post-card" href="/blog/{p['slug']}/">{f'<img src="{esc(cdn(p["img"],400))}" alt="{esc(p["title"])}" width="400" height="250" loading="lazy">' if p['img'] else ''}<div><p class="small">{esc(p.get('category',''))} · {p['dt'].strftime('%b %-d, %Y')}</p><h2>{esc(p['title'])}</h2><p>{esc(p.get('description',''))}</p></div></a>""" for p in lst) or "<p>No posts yet.</p>"
     for p in posts:
         img = p["img"]; cat = p.get("category")
         rel = [x for x in posts if x is not p and x.get("category")==cat][:3]
         body = f"""{crumb_html([("Home","/"),("Blog","/blog/")]+([(cat,f"/blog/category/{slugify(cat)}/")] if cat else [])+[(p['title'],None)])}
 <article class="prose post">{f'<a class="kicker" href="/blog/category/{slugify(cat)}/">{esc(cat)}</a>' if cat else ''}<h1>{esc(p['title'])}</h1>{f'<p class="qline"><span>Q</span>{esc(p["question"])}</p>' if p.get("question") else ''}<p class="small">{p['dt'].strftime('%B %-d, %Y')} · By {SITE_NAME}</p>
-{f'<img class="post-hero" src="{esc(img)}" alt="" width="760" height="380">' if img else ''}{md(p['body'])}</article>
+{f'<img class="post-hero" src="{esc(cdn(img,760))}" alt="{esc(p["title"])}" width="760" height="380">' if img else ''}{md(p['body'])}</article>
 {f'<section class="sec"><h2 class="h2">More {esc(cat)}</h2><div class="posts four">{plist(rel)}</div></section>' if rel else ''}"""
         sch = [{"@context":"https://schema.org","@type":"BlogPosting","headline":p["title"],"description":p.get("description",""),"datePublished":p["dt"].isoformat(),"articleSection":cat,
                 "image":img or None,"author":{"@type":"Organization","name":SITE_NAME,"url":SITE_URL+"/about/"},"publisher":{"@type":"Organization","name":SITE_NAME,"logo":{"@type":"ImageObject","url":SITE_URL+"/logo.svg"}},"mainEntityOfPage":f"{SITE_URL}/blog/{p['slug']}/"},
