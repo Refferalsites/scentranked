@@ -405,7 +405,7 @@ def build():
                ("For","Men" if p["gender"]=="men" else "Unisex"),("Scent family (our description)",esc(f["family"])),("Yoovic product ID",esc(pid)),
                ("Price",(esc(price(i))+f' <span class="small">({chk})</span>') if not st else 'Check current price on Yoovic'),("Availability",(esc(avail)+f' <span class="small">({chk})</span>') if avail and not st else NC)]
         dt="".join(f"<tr><th>{k}</th><td>{v}</td></tr>" for k,v in specs)
-        thumbs="".join(f'<button type="button" data-src="{cdn(g,600)}" aria-label="View image {k+1}" aria-pressed="{str(k==0).lower()}"><img src="{cdn(g,144)}" alt="{esc(f['short'])} image {k+1}" width="72" height="72" loading="lazy"></button>' for k,g in enumerate(gal)) if len(gal)>1 else ""
+        thumbs="".join(f'<button type="button" data-src="{cdn(g,600)}" aria-label="View image {k+1}" aria-pressed="{str(k==0).lower()}"><img src="{cdn(g,144)}" alt="{esc(f["short"])} image {k+1}" width="72" height="72" loading="lazy"></button>' for k,g in enumerate(gal)) if len(gal)>1 else ""
         notes=f'<p><strong>Widely published notes:</strong> {esc(f["notes"])}.</p>' if f["notes"] else '<p>Note list: Not confirmed by the retailer. The listing describes the scent in general terms only (quoted below).</p>'
         qa="".join(f'<details class="faq"><summary>{esc(q["question"])}</summary><div><p>{answer(i,q["pattern"])}</p></div></details>' for q in PQ.get(f["slug"],[]))
         bd="".join(f'<span class="badge {c}">{t}</span>' for c,t in badges(i))
