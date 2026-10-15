@@ -4,12 +4,12 @@ on:
     - cron: "15 4 * * *"   # daily 04:15 UTC (09:15 PKT); posts dated before this go live
   workflow_dispatch:
 jobs:
-  trigger-netlify:
+  trigger-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Netlify build hook
+      - name: Trigger Cloudflare Pages deploy hook
         env:
-          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+          HOOK: ${{ secrets.CF_PAGES_DEPLOY_HOOK }}
         run: |
-          if [ -z "$HOOK" ]; then echo "NETLIFY_BUILD_HOOK secret not set"; exit 1; fi
-          curl -fsS -X POST -d '{}' "$HOOK"
+          if [ -z "$HOOK" ]; then echo "CF_PAGES_DEPLOY_HOOK secret not set"; exit 1; fi
+          curl -fsS -X POST "$HOOK"

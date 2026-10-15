@@ -1,0 +1,29 @@
+name: IndexNow after deploy
+# Cloudflare Pages has no deploy-succeeded event. After each push to main (admin edits, price sync)
+# or the daily scheduled build, wait until the new build is live, then ask the site to submit changed URLs.
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: ["Scheduled publish"]
+    types: [completed]
+  workflow_dispatch:
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for deploy and submit
+        env:
+          SITE: ${{ vars.SITE_URL || 'https://scentranked.pages.dev' }}
+          SECRET: ${{ secrets.INDEXNOW_HOOK_SECRET }}
+          SHA: ${{ github.event_name == 'push' && github.sha || '' }}
+        run: |
+          if [ -z "$SECRET" ]; then echo "INDEXNOW_HOOK_SECRET not set"; exit 1; fi
+          for i in $(seq 1 40); do
+            live=$(curl -fsS -H 'cache-control: no-cache' "$SITE/build-id.txt?t=$(date +%s)" || true)
+            if [ -n "$SHA" ] && [ "$live" = "$SHA" ]; then break; fi
+            if [ -z "$SHA" ] && [ $i -ge 12 ]; then break; fi   # deploy hook build: ~6 min grace
+            sleep 30
+          done
+          echo "Live build: $live"
+          curl -fsS -X POST -H "x-hook-secret: $SECRET" "$SITE/api/indexnow-hook"

@@ -5,7 +5,7 @@ from urllib.parse import urlencode
 
 # ===== CENTRAL CONFIG =====
 SITE_NAME = "ScentRanked"
-SITE_URL = "https://scentranked.netlify.app"
+SITE_URL = (os.environ.get("SITE_URL") or "https://scentranked.pages.dev").rstrip("/")
 AFFILIATE_PARAMS = {}   # e.g. {"ref": "YOUR_ID"} - appended to every yoovic.com buy link
 CONTACT_EMAIL = '<a href="/contact/">our contact form</a>'
 # ==========================
@@ -26,10 +26,38 @@ if SETTINGS.get("affiliate_params"):
 esc = html.escape
 
 from urllib.parse import quote as _q
+# Build-time WebP conversion (replaces Netlify Image CDN). Originals are downloaded once into
+# img_cache/src (committed, so CF builds don't re-download); resized WebP files go to public/img/.
+import hashlib, urllib.request
+IMG_CACHE = os.path.join(BASE, "img_cache")
+_IMG_DONE = {}
+def _img_src(u):
+    h = hashlib.sha1(u.encode()).hexdigest()[:16]
+    p = os.path.join(IMG_CACHE, "src", h)
+    if not os.path.exists(p):
+        os.makedirs(os.path.dirname(p), exist_ok=True)
+        req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 (compatible; %sBuild/1.0)" % SITE_NAME})
+        data = urllib.request.urlopen(req, timeout=30).read()
+        open(p, "wb").write(data)
+    return h, p
 def cdn(u, w=400):
     u=str(u)
-    if u.startswith("http"): return f"/.netlify/images?url={_q(u, safe='')}&w={w}&fm=webp&q=80"
-    return u
+    if not u.startswith("http"): return u
+    if (u, w) in _IMG_DONE: return _IMG_DONE[(u, w)]
+    try:
+        from PIL import Image
+        h, p = _img_src(u)
+        rel = f"/img/{h}-{w}.webp"; outp = os.path.join(OUT, rel.lstrip("/"))
+        if not os.path.exists(outp):
+            os.makedirs(os.path.dirname(outp), exist_ok=True)
+            im = Image.open(p); im = im.convert("RGBA") if im.mode in ("P", "LA") else im
+            if im.mode not in ("RGB", "RGBA"): im = im.convert("RGB")
+            if im.width > w: im = im.resize((w, max(1, round(im.height * w / im.width))), Image.LANCZOS)
+            im.save(outp, "WEBP", quality=80, method=6)
+        r = rel
+    except Exception as e:
+        print("  image fallback (original URL):", u, e); r = u
+    _IMG_DONE[(u, w)] = r; return r
 
 def buy_url(u):
     if not AFFILIATE_PARAMS: return u
@@ -307,7 +335,7 @@ def footer():
     bl="".join(f'<li><a href="/blog/category/{slugify(c)}/">{esc(c)}</a></li>' for c in BLOG_CATS)+"".join(f'<li class="fpost"><a href="/blog/{x["slug"]}/">{esc(x["title"])}</a></li>' for x in POSTS[:3])+'<li><a href="/questions/">Questions &amp; answers</a></li><li><a href="/blog/">All articles →</a></li>'
     return f"""<footer class="ftr"><div class="wrap">
 <div class="news"><div><h2>The ScentRanked Edit</h2><p>New guides and picks, about twice a month. No spam.</p></div>
-<form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="company" action="/thanks/"><input type="hidden" name="form-name" value="newsletter"><p class="hp"><label>Company <input name="company"></label></p>
+<form name="newsletter" method="POST" action="/api/form"><input type="hidden" name="form-name" value="newsletter"><p class="hp"><label>Company <input name="company"></label></p>
 <label class="sr" for="nl-email">Email address</label><input id="nl-email" type="email" name="email" required placeholder="you@example.com" autocomplete="email"><button class="btn">Subscribe</button></form></div>
 <div class="fgrid"><div>{logo()}<p>Plain-English guides to the best designer colognes for men, for US shoppers.</p><div class="soc">{soc}</div></div>
 <div><h3>Best Lists</h3><ul>{lists}<li><a href="/shop/">Shop all</a></li></ul></div>
@@ -508,12 +536,12 @@ def build():
     urls.insert(0,page("index.html",f"Best Designer Colognes for Men ({YEAR}): Top Picks | {SITE_NAME}","The best designer colognes for men in "+str(YEAR)+": compliment-getters, date night, summer and under-$100 picks from Chanel, Versace, JPG, Armani and Creed, with current prices.",body,sch,P[14]['image'],full=True))
     # ---- static pages
     urls.append(page("contact/index.html",f"Contact | {SITE_NAME}","Contact the ScentRanked team about corrections, partnerships or privacy requests.",crumb_html([("Home","/"),("Contact",None)])+f'''<div class="prose"><h1>Contact {SITE_NAME}</h1><p>Questions, corrections or privacy requests? Send us a message and we'll reply by email. For orders, shipping or returns, contact Yoovic directly at <a href="mailto:support@yoovic.com">support@yoovic.com</a>. We don't sell or ship products.</p>
-<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thanks/" class="cform"><input type="hidden" name="form-name" value="contact"><p hidden><label>Leave empty <input name="bot-field"></label></p>
+<form name="contact" method="POST" action="/api/form" class="cform"><input type="hidden" name="form-name" value="contact"><p hidden><label>Leave empty <input name="bot-field"></label></p>
 <p><label>Name<br><input name="name" required maxlength="100"></label></p><p><label>Email<br><input type="email" name="email" required></label></p><p><label>Message<br><textarea name="message" rows="6" required maxlength="4000"></textarea></label></p><button class="btn" type="submit">Send message</button></form></div>'''))
     page("contact/thanks/index.html",f"Thanks | {SITE_NAME}","Message received.",'<div class="prose"><h1>Thanks, your message was sent.</h1><p><a href="/">Back to home</a></p></div>',noindex=True)
     S={"about":("About ScentRanked",f"<h1>About {SITE_NAME}</h1><p>{SITE_NAME} is a small editorial site that helps US shoppers pick a men's cologne without the hype. Our guides are organized around real situations (office, summer, date night, budget), and we stick to fragrances with long, well-documented reputations.</p><h2>How we write</h2><ul><li>Scent notes come from brand or retailer information, or widely published fragrance pyramids.</li><li>Our take is editorial opinion. We don't publish star ratings, scores or invented customer reviews.</li><li>Prices are checked on the retailer's site and dated, and they can change at any time.</li></ul><h2>Contact</h2><p>{CONTACT_EMAIL}</p>"),
        "affiliate-disclosure":("Affiliate Disclosure",f"<h1>Affiliate Disclosure</h1><p>{SITE_NAME} is reader-supported. \"Purchase Now\" links on this site point to <a href='https://yoovic.com' rel='sponsored nofollow'>Yoovic</a>, and we may earn a commission if you buy through them, at no extra cost to you.</p><p>Commissions never change our editorial opinion or the order of our rankings. We are not affiliated with, endorsed by, or sponsored by any of the fragrance brands mentioned. All trademarks belong to their owners.</p><p>Yoovic handles purchases, shipping, returns and customer service. Please review its terms before buying.</p><p>This disclosure follows the U.S. Federal Trade Commission's guidance on endorsements.</p>"),
-       "privacy":("Privacy Policy",f"<h1>Privacy Policy</h1><p class='small'>Last updated {TODAY}</p><p>{SITE_NAME} does not require accounts.</p><h2>Newsletter</h2><p>If you subscribe, we store your email address (via our host's form service) only to send the newsletter. Unsubscribe or request deletion at any time by contacting {CONTACT_EMAIL}.</p><h2>Technical data</h2><p>Our hosting provider may log standard technical data (IP address, browser, pages visited) for security and performance.</p><h2>Cookies & third parties</h2><p>We don't set advertising cookies. Fonts load from Google Fonts and product images from yoovic.com. When you click a Purchase Now link you go to Yoovic, which has its own privacy policy and may use cookies to attribute the referral.</p><h2>Your rights</h2><p>US residents, including California residents under the CCPA/CPRA, may request access to or deletion of personal data we hold. Contact {CONTACT_EMAIL}.</p><h2>Children</h2><p>This site is not directed at children under 13.</p>"),
+       "privacy":("Privacy Policy",f"<h1>Privacy Policy</h1><p class='small'>Last updated {TODAY}</p><p>{SITE_NAME} does not require accounts.</p><h2>Newsletter</h2><p>If you subscribe, we store your email address (in our hosting provider's storage) only to send the newsletter. Unsubscribe or request deletion at any time by contacting {CONTACT_EMAIL}.</p><h2>Technical data</h2><p>Our hosting provider may log standard technical data (IP address, browser, pages visited) for security and performance.</p><h2>Cookies & third parties</h2><p>We don't set advertising cookies. Fonts load from Google Fonts and product images from yoovic.com. When you click a Purchase Now link you go to Yoovic, which has its own privacy policy and may use cookies to attribute the referral.</p><h2>Your rights</h2><p>US residents, including California residents under the CCPA/CPRA, may request access to or deletion of personal data we hold. Contact {CONTACT_EMAIL}.</p><h2>Children</h2><p>This site is not directed at children under 13.</p>"),
        "thanks":("Thanks for subscribing","<h1>You're on the list.</h1><p>Thanks for subscribing to The ScentRanked Edit.</p><p><a class='btn' href='/shop/'>Keep shopping</a></p>")}
     for s,(t,b) in S.items():
         u=page(f"{s}/index.html",f"{t} | {SITE_NAME}",f"{t} for {SITE_NAME}.",f'<section class="prose static">{b}</section>')
@@ -533,6 +561,30 @@ def build():
     if ik: open(os.path.join(OUT, f"{ik}.txt"), "w").write(ik)
     json.dump({"indexnow_key": ik, "urls": {u: URL_HASH[u] for u in urls if u in URL_HASH}}, open(os.path.join(OUT, "indexnow-urls.json"), "w"))
     open(os.path.join(OUT,"robots.txt"),"w").write(f"User-agent: *\nAllow: /\nDisallow: /thanks/\nDisallow: /admin/\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+    # Cloudflare Pages: redirects + headers (replaces netlify.toml)
+    open(os.path.join(OUT,"_redirects"),"w").write("/index.html / 301\n/*/index.html /:splat/ 301\n")
+    open(os.path.join(OUT,"_headers"),"w").write("""/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+/*.css
+  Cache-Control: public, max-age=86400
+/*.js
+  Cache-Control: public, max-age=86400
+/admin/*
+  X-Robots-Tag: noindex, nofollow
+  X-Frame-Options: DENY
+  Cache-Control: no-store
+/indexnow-urls.json
+  Cache-Control: no-store
+/build-id.txt
+  Cache-Control: no-store
+""")
+    open(os.path.join(OUT,"build-id.txt"),"w").write(os.environ.get("CF_PAGES_COMMIT_SHA") or os.environ.get("GITHUB_SHA") or "local")
     print(len(urls),"pages in sitemap")
 # ===== BLOG =====
 # content/blog/*.md with front matter. Skipped if status != published or date is in the future.

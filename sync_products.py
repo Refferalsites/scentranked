@@ -9,7 +9,7 @@ import json, re, html, os, sys, time, datetime, urllib.request, concurrent.futur
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 PF = os.path.join(BASE, "data", "products.json")
-UA = "Mozilla/5.0 (compatible; ScentRankedPriceSync/1.0; +https://scentranked.netlify.app/about/)"
+UA = "Mozilla/5.0 (compatible; ScentRankedPriceSync/1.0; +https://scentranked.pages.dev/about/)"
 NOW = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
 
 def fetch(url):

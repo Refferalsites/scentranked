@@ -1,13 +1,13 @@
 (function(){
-const $=s=>document.querySelector(s),api="/.netlify/functions/admin-api",msg=t=>{$("#msg").textContent=t||""};
+const $=s=>document.querySelector(s),api="/api/admin-api",msg=t=>{$("#msg").textContent=t||""};
 async function call(action,body){const r=await fetch(api+"?action="+action+(body&&body.qs!==undefined?body.qs:""),body&&body.qs===undefined?{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)}:{credentials:"same-origin"});
  const d=await r.json().catch(()=>({error:"Bad response"}));if(r.status===401){show(false);throw new Error("Session expired, please sign in")}if(!r.ok)throw new Error(d.error||("Error "+r.status));return d}
 function show(app){$("#login").hidden=app;$("#app").hidden=!app}
 $("#lf").onsubmit=async e=>{e.preventDefault();$("#lerr").textContent="";const f=new FormData(e.target);
- const r=await fetch("/.netlify/functions/admin-login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({username:f.get("username"),password:f.get("password")})});
+ const r=await fetch("/api/admin-login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({username:f.get("username"),password:f.get("password")})});
  const d=await r.json().catch(()=>({}));if(r.ok){e.target.reset();start()}else $("#lerr").textContent=d.error||"Login failed"};
-$("#logout").onclick=async()=>{await fetch("/.netlify/functions/admin-login",{method:"DELETE"});show(false)};
-document.querySelectorAll("header nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("header nav button").forEach(x=>x.classList.toggle("on",x===b));["posts","products","settings","seo","idx"].forEach(t=>$("#t-"+t).hidden=t!==b.dataset.tab);msg("")});
+$("#logout").onclick=async()=>{await fetch("/api/admin-login",{method:"DELETE"});show(false)};
+document.querySelectorAll("header nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("header nav button").forEach(x=>x.classList.toggle("on",x===b));["posts","products","settings","seo","idx","msgs"].forEach(t=>$("#t-"+t).hidden=t!==b.dataset.tab);msg("");if(b.dataset.tab==="msgs")loadMsgs()});
 let META={products:[],categories:[]},SET=null,SETSHA=null,PROD=null,CUR=null;
 const pf=$("#pf");
 function toLocal(iso){const d=new Date(iso);if(isNaN(d))return"";const p=n=>String(n).padStart(2,"0");return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+"T"+p(d.getHours())+":"+p(d.getMinutes())}
@@ -47,4 +47,10 @@ async function start(){try{await call("me",{qs:""})}catch(e){show(false);return}
  $("#slugs").innerHTML="";META.products.forEach(p=>{const b=document.createElement("button");b.type="button";b.textContent=p.name;b.title="{{product:"+p.slug+"}}";b.onclick=()=>{const t=pf.body,i=t.selectionStart;t.setRangeText("\n\n{{product:"+p.slug+"}}\n\n",i,t.selectionEnd,"end");t.focus()};$("#slugs").appendChild(b)});
  try{await Promise.all([loadPosts(),loadProducts(),loadSettings()]);await loadIdx()}catch(e){msg(e.message)}}
 start();
+async function loadMsgs(){const L=$("#msglist");L.textContent="Loading…";try{const d=await call("messages",{qs:""});
+ if(!d.kv){L.textContent="KV binding STORE is not configured.";return}
+ if(!d.items.length){L.textContent="No messages yet.";return}
+ L.innerHTML="<table><tr><th>When</th><th>Form</th><th>Name</th><th>Email</th><th>Message</th><th></th></tr>"+d.items.map(m=>`<tr><td>${esc(new Date(m.at).toLocaleString())}</td><td>${esc(m.form)}</td><td>${esc(m.name||"")}</td><td><a href="mailto:${esc(m.email)}">${esc(m.email)}</a></td><td style="white-space:pre-wrap">${esc(m.message||"")}</td><td><button type="button" class="danger" data-del="${esc(m.id)}">Delete</button></td></tr>`).join("")+"</table>"+(d.total>d.items.length?`<p class="small">Showing ${d.items.length} of ${d.total}</p>`:"");
+ L.querySelectorAll("[data-del]").forEach(b=>b.onclick=async()=>{if(!confirm("Delete this message?"))return;try{await call("delete-message",{id:b.dataset.del});loadMsgs()}catch(e){msg(e.message)}})}catch(e){L.textContent=e.message}}
+$("#msgreload").onclick=loadMsgs;
 })();
