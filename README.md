@@ -58,5 +58,6 @@ Pages environment variables (Settings -> Variables and Secrets, Production):
 `ADMIN_USERNAME`, `ADMIN_PASSWORD_SHA256` (secret), `SESSION_SECRET` (secret), `GITHUB_TOKEN` (secret, fine-grained: Contents RW + Actions RW on this repo),
 `INDEXNOW_HOOK_SECRET` (secret), `PYTHON_VERSION=3.11`, optional `SITE_URL`, `GITHUB_REPO`, `GITHUB_BRANCH`, `GSC_PROPERTY`, `GSC_SERVICE_ACCOUNT_JSON`, `MERCHANT_SERVICE_ACCOUNT_JSON`, `GOOGLE_INDEXING_SA_JSON`, `TURNSTILE_SECRET`.
 KV binding (Settings -> Bindings): variable `STORE` -> a KV namespace (e.g. `scentranked-store`).
-GitHub repo secrets: `CF_PAGES_DEPLOY_HOOK` (Pages -> Settings -> Builds -> Deploy hooks, branch main), `INDEXNOW_HOOK_SECRET` (same value as in Pages). Optional repo variable `SITE_URL`.
+Deployment is Direct Upload from `.github/workflows/deploy.yml` (push to main, after Price sync, daily 04:15 UTC scheduled publish, manual). It builds, runs `wrangler pages deploy`, then calls the IndexNow hook.
+GitHub repo secrets: `CLOUDFLARE_API_TOKEN` (Pages Edit), `CLOUDFLARE_ACCOUNT_ID`, `INDEXNOW_HOOK_SECRET` (same value as in Pages).
 Local test: create `.dev.vars` with the secrets, then `npx wrangler pages dev public --kv STORE` (wrangler 4 needs Node 22+).

@@ -1,0 +1,52 @@
+name: Deploy (Cloudflare Pages)
+# Direct Upload: build here, upload to Cloudflare Pages, then notify IndexNow.
+# - push to main: admin edits (committed with a PAT) and normal pushes
+# - workflow_run: price-sync commits (pushes made with GITHUB_TOKEN don't trigger `push`)
+# - schedule: daily scheduled-publish build (posts dated before this go live)
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: ["Price sync"]
+    types: [completed]
+  schedule:
+    - cron: "15 4 * * *"   # 04:15 UTC = 09:15 PKT
+  workflow_dispatch:
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11", cache: pip }
+      - run: pip install -r requirements.txt
+      - name: Build
+        env:
+          SITE_URL: https://scentranked.pages.dev
+        run: |
+          export GITHUB_SHA=$(git rev-parse HEAD)
+          python3 build.py
+          python3 check_duplicates.py
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy public --project-name=scentranked --branch=main --commit-dirty=true
+      - name: IndexNow (submit new/changed URLs)
+        env:
+          SECRET: ${{ secrets.INDEXNOW_HOOK_SECRET }}
+        run: |
+          SHA=$(git rev-parse HEAD)
+          for i in $(seq 1 20); do
+            live=$(curl -fsS "https://scentranked.pages.dev/build-id.txt?t=$(date +%s)" || true)
+            [ "$live" = "$SHA" ] && break; sleep 6
+          done
+          curl -fsS -X POST -H "x-hook-secret: $SECRET" https://scentranked.pages.dev/api/indexnow-hook || echo "IndexNow call failed (non-fatal)"
