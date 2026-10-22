@@ -28,9 +28,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -63,9 +65,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -97,9 +101,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -131,9 +137,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -163,9 +171,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -197,9 +207,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -231,9 +243,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -264,9 +278,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -297,9 +313,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -330,9 +348,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -364,9 +384,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -399,9 +421,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -431,9 +455,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -464,9 +490,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -498,9 +526,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -528,9 +558,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -560,9 +592,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -595,9 +629,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -629,9 +665,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -664,9 +702,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -696,9 +736,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -728,9 +770,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -761,9 +805,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -795,9 +841,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -829,9 +877,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -861,9 +911,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -893,9 +945,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -926,9 +980,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -960,9 +1016,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -994,9 +1052,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1028,9 +1088,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1061,9 +1123,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1093,9 +1157,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1128,9 +1194,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1163,9 +1231,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1198,9 +1268,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1232,9 +1304,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1267,9 +1341,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1300,9 +1376,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1334,9 +1412,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1368,9 +1448,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1401,9 +1483,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1436,9 +1520,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1470,9 +1556,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1503,9 +1591,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1537,9 +1627,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1570,9 +1662,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1602,9 +1696,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1635,9 +1731,11 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   },
   {
@@ -1669,11 +1767,13 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-22T12:19:10+00:00",
    "sync": {
-    "checked_at": "2026-10-22T12:19:10+00:00",
-    "status": "ok",
-    "issues": []
+    "checked_at": "2026-10-22T18:14:12+00:00",
+    "status": "failed",
+    "issues": [
+     "fetch failed: <urlopen error timed out>"
+    ]
    }
   }
  ],
- "synced_at": "2026-10-22T12:19:10+00:00"
+ "synced_at": "2026-10-22T18:14:12+00:00"
 }
