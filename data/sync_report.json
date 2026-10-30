@@ -1,5 +1,5 @@
 {
- "ran_at": "2026-10-30T06:25:55+00:00",
+ "ran_at": "2026-10-30T12:25:36+00:00",
  "checked": 50,
  "ok": 0,
  "failed": 50,
@@ -9,7 +9,7 @@
   {
    "key": 0,
    "name": "1 Million by Paco Rabanne for Men Eau de Toilette – Tester 3.4 fl oz /",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -18,7 +18,7 @@
   {
    "key": 1,
    "name": "Afnan 9 PM For Men Eau De Parfum – Bold & Elegant Masculine Fragrance,",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -27,7 +27,7 @@
   {
    "key": 2,
    "name": "Armani Beauty Acqua di Giò Profondo Eau de Parfum for Men – Fresh & Ar",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -36,7 +36,7 @@
   {
    "key": 3,
    "name": "Armani Beauty My Way Eau de Parfum for Women – Floral Woody Luxury Fra",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -45,7 +45,7 @@
   {
    "key": 4,
    "name": "Azzaro The Most Wanted Parfum – Bold Intense Men’s Fragrance with Spic",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -54,7 +54,7 @@
   {
    "key": 5,
    "name": "Azzaro The Most Wanted Parfum – Intense Men’s Cologne, Spicy & Seducti",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -63,7 +63,7 @@
   {
    "key": 6,
    "name": "Azzaro Wanted Eau de Toilette – Woody, Citrus & Spicy Men’s Cologne wi",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -72,7 +72,7 @@
   {
    "key": 7,
    "name": "Boadicea the Victorious Blue Collection – Luxury Perfume Collection fo",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -81,7 +81,7 @@
   {
    "key": 8,
    "name": "Bvlgari Aqva Pour Homme Marine Eau De Toilette Spray for Men – Fresh A",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -90,7 +90,7 @@
   {
    "key": 9,
    "name": "Carolina Herrera 212 Men Eau De Toilette Spray – Timeless Sandalwood w",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -99,7 +99,7 @@
   {
    "key": 10,
    "name": "Carolina Herrera Good Girl Supreme Eau de Parfum – Powerful & Daring W",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -108,7 +108,7 @@
   {
    "key": 11,
    "name": "Carolina Herrera Very Good Girl Eau de Parfum Spray for Women 2.7 oz –",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -117,7 +117,7 @@
   {
    "key": 12,
    "name": "Chanel 19 Poudre Eau de Parfum Spray – Women’s Luxury Fragrance, 3.4 o",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -126,7 +126,7 @@
   {
    "key": 13,
    "name": "CHANEL Allure Homme Sport Extreme Eau de Toilette Spray – Fresh, Spicy",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -135,7 +135,7 @@
   {
    "key": 14,
    "name": "Chanel Bleu De Chanel Eau de Toilette Spray – Fresh Citrus & Woody Aro",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -144,7 +144,7 @@
   {
    "key": 15,
    "name": "CHANEL No. 5 Eau de Toilette Spray 3.4 oz – Classic Floral Aldehyde Pe",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -153,7 +153,7 @@
   {
    "key": 16,
    "name": "CHANEL No. 5 Eau de Toilette Spray 3.4 oz",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -162,7 +162,7 @@
   {
    "key": 17,
    "name": "Chanel No.5 Eau de Parfum Spray for Women 3.4 oz – Classic Long-Lastin",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -171,7 +171,7 @@
   {
    "key": 18,
    "name": "Creed Royal Oud Eau de Parfum – Men’s Luxury Cologne, Woody, Spicy & S",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -180,7 +180,7 @@
   {
    "key": 19,
    "name": "Creed Silver Mountain Water – Men’s Luxury Cologne, Citrus, Fruity & W",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -189,7 +189,7 @@
   {
    "key": 20,
    "name": "Dior Perfume – Dior Joy By Dior For – Perfumes For Women – Eau De Parf",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -198,7 +198,7 @@
   {
    "key": 21,
    "name": "Gucci Bamboo Eau de Toilette Spray for Women – 1.6 oz, Floral Woody Lu",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -207,7 +207,7 @@
   {
    "key": 22,
    "name": "Guess Seductive Noir Eau de Toilette 2.5 oz – Women’s Seductive & Eleg",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -216,7 +216,7 @@
   {
    "key": 23,
    "name": "INITIO Parfums Privés Musk Therapy Eau De Parfum – Unisex Luxury Fragr",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -225,7 +225,7 @@
   {
    "key": 24,
    "name": "Issey Miyake L’Eau d’Issey Eau de Toilette for Women – Floral & Aquati",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -234,7 +234,7 @@
   {
    "key": 25,
    "name": "Jean Paul Gaultier La Belle Paradise Garden Eau de Parfum Spray for Wo",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -243,7 +243,7 @@
   {
    "key": 26,
    "name": "Jean Paul Gaultier Le Male Eau de Toilette Spray for Men – 4.2 oz, Ori",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -252,7 +252,7 @@
   {
    "key": 27,
    "name": "Jean Paul Gaultier So Scandal! Eau De Parfum Spray for Women – Bold, S",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -261,7 +261,7 @@
   {
    "key": 28,
    "name": "Juliette Has A Gun Not A Perfume Eau De Parfum – Cetalox Fragrance wit",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -270,7 +270,7 @@
   {
    "key": 29,
    "name": "Lattafa Fakhar Eau de Parfum – Floral Fruity Sweet Long-Lasting Fragra",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -279,7 +279,7 @@
   {
    "key": 30,
    "name": "Lattafa Qaed Al Fursan Eau de Parfum – Oriental Fruity Fresh Amber Woo",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -288,7 +288,7 @@
   {
    "key": 31,
    "name": "Le Beau by Jean Paul Gaultier Eau de Parfum Intense for Men – 2.5 oz, ",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -297,7 +297,7 @@
   {
    "key": 32,
    "name": "Le Male Le Parfum by Jean Paul Gaultier Eau de Parfum Intense for Men ",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -306,7 +306,7 @@
   {
    "key": 33,
    "name": "Maison Margiela Replica Autumn Vibes Eau de Toilette – Woody & Earthy ",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -315,7 +315,7 @@
   {
    "key": 34,
    "name": "Marc Jacobs Perfect Eau de Parfum for Women – Floral Perfume with Rhub",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -324,7 +324,7 @@
   {
    "key": 35,
    "name": "Marc Jacobs Perfect Intense Eau de Parfum 3.3 fl oz – Woody Floral Wom",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -333,7 +333,7 @@
   {
    "key": 36,
    "name": "MONTBLANC Legend Blue Eau de Parfum for Men – Woody Aromatic Cologne w",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -342,7 +342,7 @@
   {
    "key": 37,
    "name": "Mugler Angel Eau de Parfum for Women – Ambery & Woody Long-Lasting Fra",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -351,7 +351,7 @@
   {
    "key": 38,
    "name": "Paco Rabanne 1 Million Parfum for Men – Luxury Long-Lasting 6.8 oz Spr",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -360,7 +360,7 @@
   {
    "key": 39,
    "name": "Parfums de Marly Greenley Eau de Parfum – Fresh Green Citrus & Woody M",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -369,7 +369,7 @@
   {
    "key": 40,
    "name": "Prada Luna Rossa Ocean Le Parfum Refillable Spray for Men – 1.6 oz, Fr",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -378,7 +378,7 @@
   {
    "key": 41,
    "name": "Roja Aoud Parfum – 3.4 Fl Oz Luxury Unisex Fragrance – Rich Oriental &",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -387,7 +387,7 @@
   {
    "key": 42,
    "name": "Valentino Donna Born In Roma Eau de Parfum Spray for Women 3.4 oz – Lo",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -396,7 +396,7 @@
   {
    "key": 43,
    "name": "Valentino Donna Born In Roma Intense Eau de Parfum – Luxurious Floral ",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -405,7 +405,7 @@
   {
    "key": 44,
    "name": "Valentino Donna Born In Roma Intense Eau de Parfum Spray for Women, 3.",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -414,7 +414,7 @@
   {
    "key": 45,
    "name": "Valentino Uomo Born In Roma The Gold Eau de Toilette Spray for Men – 3",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -423,7 +423,7 @@
   {
    "key": 46,
    "name": "Versace Dylan Purple Eau de Parfum Spray for Women – 3.4 oz, Fruity Fl",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -432,7 +432,7 @@
   {
    "key": 47,
    "name": "Versace Eros Eau de Toilette Spray for Men – 3.4 oz, Fresh, Woody & Or",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -441,7 +441,7 @@
   {
    "key": 48,
    "name": "Versace Eros Flame Eau de Parfum for Men – 3.4 oz / 100 ml Intense Woo",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
@@ -450,7 +450,7 @@
   {
    "key": 49,
    "name": "Yara Pink Eau De Parfum for Women, 100ml (3.4 fl oz) – Long-Lasting Fl",
-   "checked_at": "2026-10-30T06:25:55+00:00",
+   "checked_at": "2026-10-30T12:25:36+00:00",
    "status": "failed",
    "issues": [
     "fetch failed: HTTP Error 404: Not Found"
