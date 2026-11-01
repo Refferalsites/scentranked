@@ -28,10 +28,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -65,10 +65,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -101,10 +101,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -137,10 +137,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -171,10 +171,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -207,10 +207,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -243,10 +243,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -278,10 +278,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -313,10 +313,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -348,10 +348,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -384,10 +384,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -421,10 +421,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -455,10 +455,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -490,10 +490,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -526,10 +526,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -558,10 +558,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -592,10 +592,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -629,10 +629,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -665,10 +665,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -702,10 +702,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -736,10 +736,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -770,10 +770,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -805,10 +805,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -841,10 +841,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -877,10 +877,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -911,10 +911,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -945,10 +945,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -980,10 +980,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1016,10 +1016,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1052,10 +1052,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1088,10 +1088,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1123,10 +1123,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1157,10 +1157,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1194,10 +1194,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1231,10 +1231,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1268,10 +1268,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1304,10 +1304,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1341,10 +1341,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1376,10 +1376,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1412,10 +1412,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1448,10 +1448,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1483,10 +1483,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1520,10 +1520,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1556,10 +1556,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1591,10 +1591,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1627,10 +1627,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1662,10 +1662,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1696,10 +1696,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1731,10 +1731,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   },
@@ -1767,13 +1767,13 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-01T12:22:57+00:00",
+    "checked_at": "2026-11-01T18:19:43+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 404: Not Found"
+     "fetch failed: HTTP Error 410: Gone"
     ]
    }
   }
  ],
- "synced_at": "2026-11-01T12:22:57+00:00"
+ "synced_at": "2026-11-01T18:19:43+00:00"
 }
