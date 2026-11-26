@@ -28,10 +28,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -65,10 +65,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -101,10 +101,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -137,10 +137,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -171,10 +171,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -207,10 +207,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -243,10 +243,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -278,10 +278,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -313,10 +313,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -348,10 +348,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -384,10 +384,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -421,10 +421,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -455,10 +455,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -490,10 +490,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -526,10 +526,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -558,10 +558,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -592,10 +592,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -629,10 +629,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -665,10 +665,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -702,10 +702,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -736,10 +736,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -770,10 +770,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -805,10 +805,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -841,10 +841,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -877,10 +877,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -911,10 +911,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -945,10 +945,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -980,10 +980,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1016,10 +1016,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1052,10 +1052,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1088,10 +1088,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1123,10 +1123,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1157,10 +1157,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1194,10 +1194,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1231,10 +1231,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1268,10 +1268,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1304,10 +1304,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1341,10 +1341,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1376,10 +1376,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1412,10 +1412,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1448,10 +1448,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1483,10 +1483,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1520,10 +1520,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1556,10 +1556,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1591,10 +1591,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1627,10 +1627,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1662,10 +1662,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1696,10 +1696,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1731,10 +1731,10 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   },
@@ -1767,13 +1767,13 @@
    "availability": "add_to_cart_shown",
    "last_checked": "2026-10-29T12:25:39+00:00",
    "sync": {
-    "checked_at": "2026-11-25T16:12:47+00:00",
+    "checked_at": "2026-11-26T01:11:48+00:00",
     "status": "failed",
     "issues": [
-     "fetch failed: HTTP Error 410: Gone"
+     "fetch failed: <urlopen error timed out>"
     ]
    }
   }
  ],
- "synced_at": "2026-11-25T16:12:47+00:00"
+ "synced_at": "2026-11-26T01:11:48+00:00"
 }
